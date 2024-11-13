@@ -190,7 +190,7 @@ export const schema = {
                     "x-component": "Input",
                     "x-validator": [],
                     "x-component-props": {
-                      "placeholder": "CH4:O2:CO2 = 1:1:3"
+                      "placeholder": "eg: CH4:O2:CO2 = 1:1:3"
                     },
                     "x-decorator-props": {
                       "style": {
@@ -233,7 +233,9 @@ export const schema = {
                     "x-component-props": {
                       "placeholder": "eg: palladium on carbon  / Pd(OAc)2   /  ZSM-5"
                     },
-                    "x-decorator-props": {},
+                    "x-decorator-props": {
+                      "tooltip": "名词，或原文相关描述文本。最好是参考摘要和结论的描述"
+                    },
                     "x-designable-id": "4zkk5esxcpm",
                     "x-index": 0,
                     "name": "name"
@@ -247,7 +249,9 @@ export const schema = {
                     "x-component-props": {
                       "placeholder": "eg: 5% Pd on carbon / 20 mol% / 5 wt%"
                     },
-                    "x-decorator-props": {},
+                    "x-decorator-props": {
+                      "tooltip": "文献中怎么描述就怎么提取"
+                    },
                     "x-designable-id": "bsx1kr7ikvb",
                     "x-index": 1,
                     "name": "catalystMixtureRatio"
