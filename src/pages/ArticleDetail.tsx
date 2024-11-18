@@ -3,56 +3,61 @@ import { CloudUploadOutlined } from "@ant-design/icons";
 // import type { ActionType } from "@ant-design/pro-components";
 import { Button, Flex, message } from "antd";
 // import { useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import HighlightExample from "../PdfReviewer";
-import { OtherEndpointsService } from "../services/service";
-
-// const downloadFile = (data: string, fileName: string) => {
-//   const a = document.createElement("a");
-//   // document.body.appendChild(a);
-//   // a.style = "display: none";
-//   const blob = new Blob([data], {
-//     type: "application/octet-stream",
-//   });
-//   const url = window.URL.createObjectURL(blob);
-//   a.href = url;
-//   a.download = fileName;
-//   a.click();
-//   window.URL.revokeObjectURL(url);
-// };
+import { FileEndpointsService } from "../services/service";
+import { useEffect, useState } from "react";
 
 const ArticleDetail = () => {
-  //   const actionRef = useRef<ActionType>();
+  const [data, setData] = useState<any[]>();
   const params = useParams();
-  //   const [URLSearchParams, _] = useSearchParams();
+  const [URLSearchParams] = useSearchParams();
   //   const { state } = useLocation();
-  //   useEffect(() => {
-  //     if (state?.reload === false) return;
-  //     if (location.search === "") {
-  //       actionRef.current?.reload();
-  //     }
-  //   }, [URLSearchParams]);
+  useEffect(() => {
+    const lastVersion = URLSearchParams.get("v");
+    if (!lastVersion) {
+      setData([]);
+      return;
+    }
+    (async () => {
+      try {
+        const res = await FileEndpointsService.getUploadFile(
+          params.id || "",
+          lastVersion || ""
+        );
+        setData(res);
+      } catch (error) {
+        console.error(error);
+        setData([]);
+      }
+    })();
+  }, [URLSearchParams]);
   if (!params.id) {
     return <div>Article not found</div>;
+  }
+  if (!data) {
+    return <div>Loading...</div>;
   }
   return (
     <>
       <Flex justify="end">
         <Button
-          icon={<CloudUploadOutlined style={{fontSize: "20px"}} />}
+          icon={<CloudUploadOutlined style={{ fontSize: "20px" }} />}
           type="primary"
           size="large"
           onClick={async () => {
             const data = localStorage.getItem("reactions") || "";
-            await OtherEndpointsService.uploadAnnotationData(params.id || "", data);
+            await FileEndpointsService.uploadAnnotationData(
+              params.id || "",
+              data
+            );
             message.success("Upload success");
           }}
         >
           Upload
-          
         </Button>
       </Flex>
-      <HighlightExample fileUrl={`/articles/${params.id}`} />
+      <HighlightExample initialReactions={data} fileUrl={`/articles/${params.id}`} />
     </>
   );
 };

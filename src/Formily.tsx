@@ -25,11 +25,10 @@ import {
   FormCollapse,
   ArrayTable,
   ArrayCards,
-  FormButtonGroup,
 } from "@formily/antd-v5";
-import { createForm } from "@formily/core";
-import { FormProvider, createSchemaField, ISchema, FormConsumer } from "@formily/react";
-import { Card, Slider, Rate, Divider } from "antd";
+import { createForm, onFormValuesChange } from "@formily/core";
+import { FormProvider, createSchemaField, ISchema } from "@formily/react";
+import { Card, Slider, Rate } from "antd";
 import React from "react";
 
 import type { IFormLayoutProps } from "@formily/antd-v5";
@@ -88,17 +87,22 @@ const Formily: React.FC<{
   onChange?: (value: Record<string, any>) => void;
   value?: Record<string, any>;
 }> = ({ schema, onChange, value }) => {
-  const formRef = React.useRef(createForm({initialValues: value}));
+  const formRef = React.useRef(createForm({initialValues: value, effects: () => {
+    onFormValuesChange((form) => {
+      // form.modified = true;
+      onChange?.(form.getState().values);
+    });
+  }}));
   const form = formRef.current;
 
-  const handleOK = () => {
-    const data = form.getState().values;
-    console.log(data);
-    if (onChange) {
-      onChange(data);
-    }
-    form.modified = false;
-  };
+  // const handleOK = () => {
+  //   const data = form.getState().values;
+  //   console.log(data);
+  //   if (onChange) {
+  //     onChange(data);
+  //   }
+  //   form.modified = false;
+  // };
 
 
 //   useEffect(() => {
@@ -118,12 +122,12 @@ const Formily: React.FC<{
   return (
     <FormProvider {...formLayoutFromJSON} form={form}>
       <SchemaField schema={schemaFromJSON} />
-      <Divider />
-      <FormButtonGroup align="right">
+      {/* <Divider /> */}
+      {/* <FormButtonGroup align="right">
       <FormConsumer>
         {() => <Submit disabled={!form.modified} onSubmit={handleOK}>保存</Submit>}
       </FormConsumer>
-      </FormButtonGroup>
+      </FormButtonGroup> */}
     </FormProvider>
   );
 };

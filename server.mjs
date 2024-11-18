@@ -13,14 +13,7 @@ import {
   addUser,
   resetPassword,
 } from "./user.mjs";
-
-// 保存 JSON 文件的目录
-const uploadDirectory = path.resolve("data", "result");
-
-// 确保上传目录存在
-if (!fs.existsSync(uploadDirectory)) {
-  fs.mkdirSync(uploadDirectory);
-}
+import { uploadJSON, getJSON, getUserLatestUploads } from "./annotation.mjs";
 
 const getArticles = () => {
   const publicDir = path.resolve("public", "articles");
@@ -157,7 +150,7 @@ const start = async () => {
     },
   });
 
-  server.route({
+  server.route([{
     method: "POST",
     path: "/api/upload-json",
     options: {
@@ -178,26 +171,12 @@ const start = async () => {
           return h.response({ message: "No JSON data received" }).code(400);
         }
 
-        // 为保存的 JSON 文件生成一个唯一的文件名
-        const filename = `${Date.now()}.json`;
-        
-        const currentUserDirectory = path.join(uploadDirectory, currentUser.username);
-        if (!fs.existsSync(currentUserDirectory)) {
-          fs.mkdirSync(currentUserDirectory);
-        }
-        const userFileDirectory = path.join(currentUserDirectory, file);
-        if (!fs.existsSync(userFileDirectory)) {
-          fs.mkdirSync(userFileDirectory);
-        }
-        const filePath = path.join(userFileDirectory, filename);
-
-        // 将数据写入 JSON 文件
-        fs.writeFileSync(filePath, JSON.stringify(data));
+        const savePath = uploadJSON(data, file, currentUser.username);
 
         return h
           .response({
             message: "JSON data received and saved",
-            filePath: filePath,
+            filePath: savePath,
           })
           .code(200);
       } catch (err) {
@@ -205,7 +184,27 @@ const start = async () => {
         return h.response({ message: "Internal Server Error" }).code(500);
       }
     },
-  });
+  },{
+    method: "GET",
+    path: "/api/upload-json",
+    handler: async (request, h) => {
+      const currentUser = request.auth.credentials;
+      const result = await getUserLatestUploads(currentUser.username);
+      return h.response(result);
+    },
+  }, {
+    method: "GET",
+    path: "/api/upload-json/{article}/{filename}",
+    handler: async (request, h) => {
+      const currentUser = request.auth.credentials;
+      const { article, filename } = request.params;
+      const data = await getJSON(currentUser.username, article, filename);
+      if (!data) {
+        return h.response({ message: "File not found" }).code(404);
+      }
+      return h.response(data);
+    },
+  }]);
 
   // 登录
   server.route({

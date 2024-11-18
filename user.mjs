@@ -99,7 +99,7 @@ const resetPassword = async (username, newPass) => {
   }
   user[username].password = _hashPassword(newPass, user[username].salt);
   await db.write(user);
-}
+};
 
 const listUser = async () => {
   const user = await db.data;
@@ -114,19 +114,27 @@ const getUser = async (username) => {
   if (user[username].isDelete) {
     throw new Error("User has been deleted");
   }
-  const {salt, password, ...others} = user[username];
+  const { salt, password, ...others } = user[username];
   return others;
 };
 
 const validateUser = async (username, password) => {
-    const user = await db.data;
-    if (!user[username]) {
-        throw new Error("User does not exist");
-    }
-    if (user[username].isDelete) {
-        throw new Error("User has been deleted");
-    }
-    return verifyPassword(password, user[username].salt, user[username].password);
-}
+  const user = await db.data;
+  if (!user[username]) {
+    throw new Error("User does not exist");
+  }
+  if (user[username].isDelete) {
+    throw new Error("User has been deleted");
+  }
+  return verifyPassword(password, user[username].salt, user[username].password);
+};
 
-export { addUser, deleteUser, updateUser, listUser, getUser, validateUser, resetPassword };
+export {
+  addUser,
+  deleteUser,
+  updateUser,
+  listUser,
+  getUser,
+  validateUser,
+  resetPassword,
+};

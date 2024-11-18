@@ -33,6 +33,8 @@ import {
   Tag,
   Tooltip as AntTooltip,
   Popconfirm,
+  // Popover,
+  // Select,
 } from "antd";
 import { useEffect } from "react";
 import { schema } from "./schema";
@@ -42,6 +44,7 @@ import {
   DeleteOutlined,
   EyeInvisibleOutlined,
   EyeOutlined,
+  // MenuOutlined,
 } from "@ant-design/icons";
 import { MoveableContainer } from "./MoveableContainer/MoveableContainer";
 
@@ -80,6 +83,7 @@ interface Note {
 
 interface HighlightExampleProps {
   fileUrl: string;
+  initialReactions?: Reaction[];
 }
 
 interface Reaction {
@@ -93,13 +97,10 @@ interface Reaction {
 const getRandomString = () =>
   `${new Date().valueOf()}-${(Math.random() * 1e16).toString(32).slice(0, 5)}`;
 
-const HighlightExample: React.FC<HighlightExampleProps> = ({ fileUrl }) => {
+const HighlightExample: React.FC<HighlightExampleProps> = ({ fileUrl, initialReactions }) => {
   const [currentSelected, setCurrentSelected] = React.useState<string>();
-  const [reactions, setReactions] = React.useState<Reaction[]>(
-    localStorage.getItem("reactions")
-      ? JSON.parse(localStorage.getItem("reactions") as string)
-      : []
-  );
+  // const [selectedNote, setSelectedNote] = React.useState<string>();
+  const [reactions, setReactions] = React.useState<Reaction[]>(initialReactions || []);
 
   const noteEles: Map<string, HTMLElement> = new Map();
   const [currentDoc, setCurrentDoc] = React.useState<PdfJs.PdfDocument | null>(
@@ -153,6 +154,7 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({ fileUrl }) => {
                   return r;
                 });
                 setReactions(newReactions);
+                navigator.clipboard.writeText(note.quote);
               }}
             >
               <MessageIcon />
@@ -165,18 +167,8 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({ fileUrl }) => {
     </div>
   );
 
-  const jumpToNote = (note: Note) => {
-    // activateTab(3);
-    // const notesContainer = notesContainerRef.current;
-    // console.log('jump to note!');
-    if (noteEles.has(note.id)) {
-      noteEles.get(note.id)?.scrollIntoView();
-    }
 
-    // if (noteEles.has(note.id) && notesContainer) {
-    //     notesContainer.scrollTop = noteEles.get(note.id).getBoundingClientRect().top;
-    // }
-  };
+  // Render for pdf-viewer toolbar
   const transform: TransformToolbarSlot = (slot: ToolbarSlot) => ({
     ...slot,
     Open: () => <></>,
@@ -230,12 +222,63 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({ fileUrl }) => {
                       },
                       props.getCssProperties(area, props.rotation)
                     )}
-                    onClick={() => jumpToNote(note)}
-                    ref={(ref): void => {
-                      // Update the map
-                      noteEles.set(note.id, ref as HTMLElement);
-                    }}
-                  />
+                    // onClick={() => {
+                    //   setSelectedNote(note.id);
+                    //   console.log("noteEles:", noteEles);
+                    // }}
+                    // ref={(ref): void => {
+                    //   // Update the map
+                    //   noteEles.set(note.id, ref as HTMLElement);
+                    // }}
+                  >
+                    {/* {arr.length - 1 === idx && <Popover
+                      content={<>
+                        <Select
+                          value={r.id}
+                          onChange={value => {
+                            const newReactions = reactions.map((reaction) => {
+                              if (r.id === reaction.id) {
+                                return {
+                                  ...reaction,
+                                  notes: reaction.notes.filter(n => n.id !== note.id),
+                                };
+                              }
+                              if (value === reaction.id) {
+                                return {
+                                  ...reaction,
+                                  notes: reaction.notes.concat([note]),
+                                };
+                              }
+                              return reaction;
+                            });
+                            setReactions(newReactions);
+                          }}
+                          options={reactions.map((r) => ({label: r.id, value: r.id}))}
+                        />
+                        <AntButton
+                          onClick={() => {
+                            const newReactions = reactions.map((reaction) => {
+                              if (r.id === reaction.id) {
+                                return {
+                                  ...reaction,
+                                  notes: reaction.notes.filter(n => n.id !== note.id),
+                                };
+                              }
+                              return reaction;
+                            });
+                            setReactions(newReactions);
+                          }}
+                          icon={<DeleteOutlined />}
+                        />
+                      </>}
+                      open={selectedNote === note.id}
+                      title="Change annotation"
+                      trigger="click"
+                    >
+                      <AntButton id="asdfjhweiufas" style={{position: "fixed"}} type="primary" icon={<MenuOutlined />} />
+                    </Popover>}
+                     */}
+                  </div>
                 ))}
             </React.Fragment>
           ));

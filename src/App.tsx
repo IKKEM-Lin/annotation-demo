@@ -20,6 +20,7 @@ import ArticleDetail from "./pages/ArticleDetail";
 import User from "./pages/User";
 import {useSnapshot} from "valtio";
 import {userinfo} from "./valtio";
+import Annotation from "./pages/Annotation";
 
 const routeRender = (routes: any[]) => {
   return (
@@ -57,7 +58,7 @@ export const allRoutes = [
     path: "/annotation",
     name: "Annotation",
     icon: <FileDoneOutlined />,
-    component: <></>,
+    component: <Annotation />,
   },
   {
     path: "/user",

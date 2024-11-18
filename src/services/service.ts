@@ -19,9 +19,14 @@ export const UserEndpointsService = {
   resetPassword: (payload: { username: string; newPass: string }): IPromise<any> => request(`/api/reset-password`, { method: "put", body: payload }),
 };
 
+export const FileEndpointsService = {
+  getUploadFiles: (): IPromise<Record<string, string>[]> => request(`/api/upload-json`, { method: "get" }),
+  getUploadFile: (article: string, filename: string): IPromise<any> => request(`/api/upload-json/${article}/${filename}`, { method: "get" }),
+  uploadAnnotationData: (filename:string, payload: any): IPromise<any> => request(`/api/upload-json?file=${filename}`, { method: "post", body: payload }),
+}
+
 
 export const OtherEndpointsService = {
   login: (payload: { username: string; password: string }): IPromise<{token: string}> => request(`/api/login`, { method: "post", body: payload }),
   getArticles: (): IPromise<string[]> => request(`/api/articles`, { method: "get" }),
-  uploadAnnotationData: (filename:string, payload: any): IPromise<any> => request(`/api/upload-json?file=${filename}`, { method: "post", body: payload }),
 }
