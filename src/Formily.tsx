@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   FormItem,
   DatePicker,
@@ -93,9 +94,12 @@ const Formily: React.FC<{
   const handleOK = () => {
     const data = form.getState().values;
     console.log(data);
-    onChange && onChange(data);
+    if (onChange) {
+      onChange(data);
+    }
     form.modified = false;
   };
+
 
 //   useEffect(() => {
 //     console.log(value);
