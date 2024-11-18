@@ -18,9 +18,10 @@ import { PageContainer, ProCard, ProLayout } from "@ant-design/pro-components";
 import Article from "./pages/article";
 import ArticleDetail from "./pages/ArticleDetail";
 import User from "./pages/User";
-import {useSnapshot} from "valtio";
-import {userinfo} from "./valtio";
+import { useSnapshot } from "valtio";
+import { userinfo } from "./valtio";
 import Annotation from "./pages/Annotation";
+import { useState } from "react";
 
 const routeRender = (routes: any[]) => {
   return (
@@ -76,6 +77,7 @@ export const allRoutes = [
 
 function App() {
   // const navigate = useNavigate();
+  const [pathname, setPathname] = useState("");
   const user = useSnapshot(userinfo);
   return (
     <Router>
@@ -89,16 +91,27 @@ function App() {
               siderWidth={256}
               route={{
                 path: "/",
-                children: user.data?.role === "admin" ? allRoutes : allRoutes.filter((item) => item.path !== "/user"),
+                children:
+                  user.data?.role === "admin"
+                    ? allRoutes
+                    : allRoutes.filter((item) => item.path !== "/user"),
+              }}
+              location={{
+                pathname,
               }}
               logo={<Avatar>CBA</Avatar>}
               title="Chem Brain Annotation"
-              breadcrumbRender={false}
+              // breadcrumbRender={false}
               menuItemRender={(item, dom) => (
-                <Link to={item.path || "/"}>{dom}</Link>
+                <Link
+                  to={item.path || "/"}
+                  onClick={() => setPathname(item.path || "/")}
+                >
+                  {dom}
+                </Link>
               )}
               avatarProps={{
-                src: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80',
+                src: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80",
                 // size: 'small',
                 title: user.data?.username,
                 render: (props, dom) => {
@@ -107,14 +120,14 @@ function App() {
                       menu={{
                         items: [
                           {
-                            key: 'logout',
+                            key: "logout",
                             icon: <LogoutOutlined />,
-                            label: 'Logout',
+                            label: "Logout",
                             onClick: () => {
                               localStorage.removeItem("AUTHORIZE_TOKEN");
                               localStorage.removeItem("userinfo");
                               window.location.href = "/login";
-                            }
+                            },
                           },
                         ],
                       }}
