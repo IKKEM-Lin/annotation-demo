@@ -1,5 +1,5 @@
 # build frontend
-FROM docker.m.daocloud.io/library/node:22.11.0-slim
+FROM docker.hzc.pub/library/node:22.11.0-slim
 
 WORKDIR /app
 COPY . fe/
