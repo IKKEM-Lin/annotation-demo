@@ -1,3 +1,6 @@
 # Deploy
 Please create ```./data``` folder firstly and run:
-```docker compose up -d```
+```
+docker build -t annotation-app .
+docker compose up -d
+```
