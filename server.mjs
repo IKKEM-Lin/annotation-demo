@@ -34,7 +34,6 @@ const JWt_SECRET =
   "3ThRmJaP/b0Mh8NZSzuIgiU+Kyonc4G0n68mLS7ACPadGWN3fYFjtuIZJj2F3HRdN39LC4K1pbFIDqsDFIH4/zT4hfrRGytgjNPB4nmh6Wq5k0EgFfUgGwzMTbQCQzR/6DqY2cwrLpTUE+UBr4RiRn015m4JPhDtbDNbIrb4vElHAu/aVjCaeBd8KOozH0vkfeOUgDVxU4YFOIlaU16lEh3dTv429Iu1Rd0rRZLRDerpFgCZ0ECRO3iapfF1eCWHlSAkPsquGpDVcl2xm4ch5o9D0QeCJm5N/9reN4hrjSC+jKDO5zlOlSAD3javt7kylR4Gvk3mx7ApSgq9sCL9pA==";
 
 const validate = async function (decoded, request, h) {
-
   const user = await getUser(decoded.username);
   if (!user || user.isDelete) {
     return { isValid: false };
@@ -63,84 +62,90 @@ const start = async () => {
   server.auth.default("jwt");
 
   // 用户相关接口
-  server.route([{
-    method: "GET",
-    path: "/api/users",
-    handler: async (request, h) => {
-      const currentUser = request.auth.credentials;
-      if (currentUser.role !== "admin") {
-        return h.response({ message: "Permission denied" }).code(403);
-      }
-      // console.log(user);
-      const users = await listUser();
-      return h.response(users);
+  server.route([
+    {
+      method: "GET",
+      path: "/api/users",
+      handler: async (request, h) => {
+        const currentUser = request.auth.credentials;
+        if (currentUser.role !== "admin") {
+          return h.response({ message: "Permission denied" }).code(403);
+        }
+        // console.log(user);
+        const users = await listUser();
+        return h.response(users);
+      },
     },
-  }, {
-    method: "POST",
-    path: "/api/users",
-    handler: async (request, h) => {
-      const currentUser = request.auth.credentials;
-      if (currentUser.role !== "admin") {
-        return h.response({ message: "Permission denied" }).code(403);
-      }
-      const { username, password } = request.payload;
-      try {
-        await addUser(username, password);
-        return h.response({ message: "User added" });
-      } catch (err) {
-        return h.response({ message: err.message }).code(400);
-      }
+    {
+      method: "POST",
+      path: "/api/users",
+      handler: async (request, h) => {
+        const currentUser = request.auth.credentials;
+        if (currentUser.role !== "admin") {
+          return h.response({ message: "Permission denied" }).code(403);
+        }
+        const { username, password } = request.payload;
+        try {
+          await addUser(username, password);
+          return h.response({ message: "User added" });
+        } catch (err) {
+          return h.response({ message: err.message }).code(400);
+        }
+      },
     },
-  }, {
-    method: "PUT",
-    path: "/api/users/{username}",
-    handler: async (request, h) => {
-      const currentUser = request.auth.credentials;
-      if (currentUser.role !== "admin") {
-        return h.response({ message: "Permission denied" }).code(403);
-      }
-      const { username } = request.params;
-      const { oldPass, newPass } = request.payload;
-      try {
-        await updateUser(username, oldPass, newPass);
-        return h.response({ message: "User updated" });
-      } catch (err) {
-        return h.response({ message: err.message }).code(400);
-      }
+    {
+      method: "PUT",
+      path: "/api/users/{username}",
+      handler: async (request, h) => {
+        const currentUser = request.auth.credentials;
+        if (currentUser.role !== "admin") {
+          return h.response({ message: "Permission denied" }).code(403);
+        }
+        const { username } = request.params;
+        const { oldPass, newPass } = request.payload;
+        try {
+          await updateUser(username, oldPass, newPass);
+          return h.response({ message: "User updated" });
+        } catch (err) {
+          return h.response({ message: err.message }).code(400);
+        }
+      },
     },
-  }, {
-    method: "DELETE",
-    path: "/api/users/{username}",
-    handler: async (request, h) => {
-      const currentUser = request.auth.credentials;
-      if (currentUser.role !== "admin") {
-        return h.response({ message: "Permission denied" }).code(403);
-      }
-      const { username } = request.params;
-      try {
-        await deleteUser(username);
-        return h.response({ message: "User deleted" });
-      } catch (err) {
-        return h.response({ message: err.message }).code(400);
-      }
+    {
+      method: "DELETE",
+      path: "/api/users/{username}",
+      handler: async (request, h) => {
+        const currentUser = request.auth.credentials;
+        if (currentUser.role !== "admin") {
+          return h.response({ message: "Permission denied" }).code(403);
+        }
+        const { username } = request.params;
+        try {
+          await deleteUser(username);
+          return h.response({ message: "User deleted" });
+        } catch (err) {
+          return h.response({ message: err.message }).code(400);
+        }
+      },
     },
-  }, {
-    method: "PUT",
-    path: "/api/reset-password",
-    handler: async (request, h) => {
-      const currentUser = request.auth.credentials;
-      const { username, newPass } = request.payload;
-      if (currentUser.role !== "admin" && username === 'admin') {
-        return h.response({ message: "Permission denied" }).code(403);
-      }
-      try {
-        await resetPassword(username, newPass);
-        return h.response({ message: "Password reset" });
-      } catch (err) {
-        return h.response({ message: err.message }).code(400);
-      }
-    }
-  }])
+    {
+      method: "PUT",
+      path: "/api/reset-password",
+      handler: async (request, h) => {
+        const currentUser = request.auth.credentials;
+        const { username, newPass } = request.payload;
+        if (currentUser.role !== "admin" && username === "admin") {
+          return h.response({ message: "Permission denied" }).code(403);
+        }
+        try {
+          await resetPassword(username, newPass);
+          return h.response({ message: "Password reset" });
+        } catch (err) {
+          return h.response({ message: err.message }).code(400);
+        }
+      },
+    },
+  ]);
 
   server.route({
     method: "GET",
@@ -150,61 +155,65 @@ const start = async () => {
     },
   });
 
-  server.route([{
-    method: "POST",
-    path: "/api/upload-json",
-    options: {
-      // 设置请求体解析为 JSON
-      payload: {
-        parse: true, // 解析请求体为 JSON
-        allow: "application/json", // 限制只接受 JSON 类型的请求
+  server.route([
+    {
+      method: "POST",
+      path: "/api/upload-json",
+      options: {
+        // 设置请求体解析为 JSON
+        payload: {
+          parse: true, // 解析请求体为 JSON
+          allow: "application/json", // 限制只接受 JSON 类型的请求
+        },
+      },
+      handler: async (request, h) => {
+        try {
+          const data = request.payload; // 获取 JSON 数据
+          // 获取路径参数file
+          const { file } = request.query;
+          const currentUser = request.auth.credentials;
+
+          if (!data) {
+            return h.response({ message: "No JSON data received" }).code(400);
+          }
+
+          const savePath = uploadJSON(data, file, currentUser.username);
+
+          return h
+            .response({
+              message: "JSON data received and saved",
+              filePath: savePath,
+            })
+            .code(200);
+        } catch (err) {
+          console.error("Error processing JSON data:", err);
+          return h.response({ message: "Internal Server Error" }).code(500);
+        }
       },
     },
-    handler: async (request, h) => {
-      try {
-        const data = request.payload; // 获取 JSON 数据
-        // 获取路径参数file
-        const { file } = request.query;
+    {
+      method: "GET",
+      path: "/api/upload-json",
+      handler: async (request, h) => {
         const currentUser = request.auth.credentials;
-
+        const result = await getUserLatestUploads(currentUser.username);
+        return h.response(result);
+      },
+    },
+    {
+      method: "GET",
+      path: "/api/upload-json/{article}/{filename}",
+      handler: async (request, h) => {
+        const currentUser = request.auth.credentials;
+        const { article, filename } = request.params;
+        const data = await getJSON(currentUser.username, article, filename);
         if (!data) {
-          return h.response({ message: "No JSON data received" }).code(400);
+          return h.response({ message: "File not found" }).code(404);
         }
-
-        const savePath = uploadJSON(data, file, currentUser.username);
-
-        return h
-          .response({
-            message: "JSON data received and saved",
-            filePath: savePath,
-          })
-          .code(200);
-      } catch (err) {
-        console.error("Error processing JSON data:", err);
-        return h.response({ message: "Internal Server Error" }).code(500);
-      }
+        return h.response(data);
+      },
     },
-  },{
-    method: "GET",
-    path: "/api/upload-json",
-    handler: async (request, h) => {
-      const currentUser = request.auth.credentials;
-      const result = await getUserLatestUploads(currentUser.username);
-      return h.response(result);
-    },
-  }, {
-    method: "GET",
-    path: "/api/upload-json/{article}/{filename}",
-    handler: async (request, h) => {
-      const currentUser = request.auth.credentials;
-      const { article, filename } = request.params;
-      const data = await getJSON(currentUser.username, article, filename);
-      if (!data) {
-        return h.response({ message: "File not found" }).code(404);
-      }
-      return h.response(data);
-    },
-  }]);
+  ]);
 
   // 登录
   server.route({
@@ -223,11 +232,62 @@ const start = async () => {
       if (isValid) {
         const user = await getUser(username);
         return h.response({
-          token: JWT.sign({...user}, JWt_SECRET),
+          token: JWT.sign({ ...user }, JWt_SECRET),
         });
       } else {
         return h.response({ message: "Invalid credentials" }).code(401);
       }
+    },
+  });
+
+  // 静态文件服务,并将路由交给前端处理
+  server.route([{
+    method: "GET",
+    options: {
+      auth: false,
+    },
+    path: "/drag.js",
+    handler: {
+      file: {
+        path: "dist/drag.js",
+      },
+    },
+  },{
+    method: "GET",
+    options: {
+      auth: false,
+    },
+    path: "/assets/{param*}",
+    handler: {
+      directory: {
+        path: "dist/assets/",
+        redirectToSlash: true,
+      },
+    },
+  },{
+    method: "GET",
+    options: {
+      auth: false,
+    },
+    path: "/articles/{param*}",
+    handler: {
+      directory: {
+        path: "dist/articles/",
+        redirectToSlash: true,
+      },
+    },
+  }]);
+
+  server.route({
+    method: "GET",
+    options: {
+      auth: false,
+    },
+    path: "/{param*}",
+    handler: {
+      file: {
+        path: "dist/index.html",
+      },
     },
   });
 

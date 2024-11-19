@@ -12,10 +12,11 @@ import {
   Route,
   Link,
   Outlet,
+  Navigate
 } from "react-router-dom";
 import Login from "./login";
 import { PageContainer, ProCard, ProLayout } from "@ant-design/pro-components";
-import Article from "./pages/article";
+import Article from "./pages/Article";
 import ArticleDetail from "./pages/ArticleDetail";
 import User from "./pages/User";
 import { useSnapshot } from "valtio";
@@ -43,6 +44,12 @@ const routeRender = (routes: any[]) => {
 };
 
 export const allRoutes = [
+  {
+    path: "/",
+    name: "Root",
+    hideInMenu: true,
+    component: <Navigate to="/article" replace={true} />,
+  },
   {
     path: "/article",
     name: "Article",
@@ -114,7 +121,7 @@ function App() {
                 src: "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80",
                 // size: 'small',
                 title: user.data?.username,
-                render: (props, dom) => {
+                render: (_, dom) => {
                   return (
                     <Dropdown
                       menu={{
