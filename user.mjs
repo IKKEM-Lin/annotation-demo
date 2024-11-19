@@ -1,4 +1,5 @@
 import path from "path";
+import fs from "fs";
 import crypto from "crypto";
 import { JSONFilePreset } from "lowdb/node";
 
@@ -30,7 +31,10 @@ const getDefaultUser = () => {
   });
 };
 
-// console.log(getDefaultUser());
+// if not exits, create default user
+if (!fs.existsSync(path.resolve("data", "user.json"))) {
+  fs.writeFileSync(path.resolve("data", "user.json"), getDefaultUser());
+}
 
 const db = await JSONFilePreset(
   path.resolve("data", "user.json"),
