@@ -27,6 +27,7 @@ const getDefaultUser = () => {
       password,
       salt,
       isDelete: false,
+      role: "admin",
     },
   });
 };
