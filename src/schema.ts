@@ -69,125 +69,6 @@ export const schema = {
                 "x-designable-id": "v8bwvw76j2v",
                 "x-index": 0,
                 properties: {
-                  reactants: {
-                    type: "array",
-                    "x-decorator": "FormItem",
-                    "x-component": "ArrayTable",
-                    "x-validator": [],
-                    "x-component-props": {
-                      showHeader: true,
-                    },
-                    "x-decorator-props": {
-                      layout: "vertical",
-                      style: {
-                        margin: "0% 0% 0% 0%",
-                      },
-                      labelAlign: "left",
-                      tooltip:
-                        "Name：具体命名或称谓或代号； Conversion：数字+单位,或其他可定量的描述。",
-                    },
-                    "x-designable-id": "rzgyyiybglc",
-                    "x-index": 0,
-                    name: "reactants",
-                    title: "Reactants",
-                    items: {
-                      type: "object",
-                      "x-designable-id": "vrkpt4asp3g",
-                      "x-validator": [],
-                      properties: {
-                        name: {
-                          type: "void",
-                          "x-component": "ArrayTable.Column",
-                          "x-component-props": {
-                            title: "Name",
-                          },
-                          name: "name",
-                          "x-designable-id": "q0pxdugbamn",
-                          "x-index": 0,
-                          properties: {
-                            name: {
-                              type: "string",
-                              "x-decorator": "FormItem",
-                              "x-component": "Input",
-                              "x-validator": [],
-                              "x-component-props": {
-                                placeholder: "eg: methane  / CH3OH",
-                              },
-                              "x-decorator-props": {},
-                              name: "name",
-                              "x-designable-id": "4vh9szs7zvp",
-                              "x-index": 0,
-                            },
-                          },
-                        },
-                        conversion: {
-                          type: "void",
-                          "x-component": "ArrayTable.Column",
-                          "x-component-props": {
-                            title: "Conversion",
-                          },
-                          name: "conversion",
-                          "x-designable-id": "ossfwxti4t4",
-                          "x-index": 1,
-                          properties: {
-                            conversion: {
-                              type: "string",
-                              "x-decorator": "FormItem",
-                              "x-component": "Input",
-                              "x-validator": [],
-                              "x-component-props": {
-                                placeholder:
-                                  "eg: 80.22 %  / >99%  / nearly complete  /  quantitative / trace",
-                              },
-                              "x-decorator-props": {},
-                              name: "conversion",
-                              "x-designable-id": "bst0z3jt3wz",
-                              "x-index": 0,
-                            },
-                          },
-                        },
-                        b7r701f21nf: {
-                          type: "void",
-                          "x-component": "ArrayTable.Column",
-                          "x-component-props": {
-                            title: "Operations",
-                          },
-                          "x-designable-id": "b7r701f21nf",
-                          "x-index": 2,
-                          properties: {
-                            ji0j9qy3cz0: {
-                              type: "void",
-                              "x-component": "ArrayTable.Remove",
-                              "x-designable-id": "ji0j9qy3cz0",
-                              "x-index": 0,
-                            },
-                            hwlsz74ank7: {
-                              type: "void",
-                              "x-component": "ArrayTable.MoveDown",
-                              "x-designable-id": "hwlsz74ank7",
-                              "x-index": 1,
-                            },
-                            "6jhp7snr6db": {
-                              type: "void",
-                              "x-component": "ArrayTable.MoveUp",
-                              "x-designable-id": "6jhp7snr6db",
-                              "x-index": 2,
-                            },
-                          },
-                        },
-                      },
-                    },
-                    properties: {
-                      gdw2y7ajrz4: {
-                        type: "void",
-                        title: "Addition",
-                        "x-component": "ArrayTable.Addition",
-                        "x-component-props": {},
-                        "x-designable-id": "gdw2y7ajrz4",
-                        "x-index": 0,
-                      },
-                    },
-                  },
                   reactantMixtureRatio: {
                     type: "string",
                     title: "Reactant Mixture Ratio",
@@ -205,7 +86,144 @@ export const schema = {
                     },
                     name: "reactantMixtureRatio",
                     "x-designable-id": "k3byxmosbl2",
+                    "x-index": 0,
+                  },
+                  tp9bcsq7bnl: {
+                    type: "void",
+                    "x-component": "FormLayout",
+                    "x-component-props": {
+                      style: {
+                        borderColor: "rgba(224,224,224,1)",
+                        borderTopColor: "rgba(224,224,224,1)",
+                        borderTopStyle: "solid",
+                        borderTopWidth: "1px",
+                        padding: "20px 0px 0px 0px",
+                        margin: "20px 0px 0px 0px",
+                      },
+                    },
+                    "x-designable-id": "tp9bcsq7bnl",
                     "x-index": 1,
+                    properties: {
+                      reactants: {
+                        type: "array",
+                        "x-decorator": "FormItem",
+                        "x-component": "ArrayTable",
+                        "x-validator": [],
+                        "x-component-props": {
+                          showHeader: true,
+                        },
+                        "x-decorator-props": {
+                          layout: "vertical",
+                          style: {
+                            margin: "0% 0% 0% 0%",
+                          },
+                          labelAlign: "left",
+                          tooltip:
+                            "Name：具体命名或称谓或代号； Conversion：数字+单位,或其他可定量的描述。",
+                        },
+                        "x-designable-id": "rzgyyiybglc",
+                        "x-index": 0,
+                        name: "reactants",
+                        title: "Reactants",
+                        items: {
+                          type: "object",
+                          "x-designable-id": "vrkpt4asp3g",
+                          "x-validator": [],
+                          properties: {
+                            name: {
+                              type: "void",
+                              "x-component": "ArrayTable.Column",
+                              "x-component-props": {
+                                title: "Name",
+                              },
+                              name: "name",
+                              "x-designable-id": "q0pxdugbamn",
+                              "x-index": 0,
+                              properties: {
+                                name: {
+                                  type: "string",
+                                  "x-decorator": "FormItem",
+                                  "x-component": "Input",
+                                  "x-validator": [],
+                                  "x-component-props": {
+                                    placeholder: "eg: methane  / CH3OH",
+                                  },
+                                  "x-decorator-props": {},
+                                  name: "name",
+                                  "x-designable-id": "4vh9szs7zvp",
+                                  "x-index": 0,
+                                },
+                              },
+                            },
+                            conversion: {
+                              type: "void",
+                              "x-component": "ArrayTable.Column",
+                              "x-component-props": {
+                                title: "Conversion",
+                              },
+                              name: "conversion",
+                              "x-designable-id": "ossfwxti4t4",
+                              "x-index": 1,
+                              properties: {
+                                conversion: {
+                                  type: "string",
+                                  "x-decorator": "FormItem",
+                                  "x-component": "Input",
+                                  "x-validator": [],
+                                  "x-component-props": {
+                                    placeholder:
+                                      "eg: 80.22 %  / >99%  / nearly complete  /  quantitative / trace",
+                                  },
+                                  "x-decorator-props": {},
+                                  name: "conversion",
+                                  "x-designable-id": "bst0z3jt3wz",
+                                  "x-index": 0,
+                                },
+                              },
+                            },
+                            b7r701f21nf: {
+                              type: "void",
+                              "x-component": "ArrayTable.Column",
+                              "x-component-props": {
+                                title: "Operations",
+                              },
+                              "x-designable-id": "b7r701f21nf",
+                              "x-index": 2,
+                              properties: {
+                                ji0j9qy3cz0: {
+                                  type: "void",
+                                  "x-component": "ArrayTable.Remove",
+                                  "x-designable-id": "ji0j9qy3cz0",
+                                  "x-index": 0,
+                                },
+                                hwlsz74ank7: {
+                                  type: "void",
+                                  "x-component": "ArrayTable.MoveDown",
+                                  "x-designable-id": "hwlsz74ank7",
+                                  "x-index": 1,
+                                },
+                                "6jhp7snr6db": {
+                                  type: "void",
+                                  "x-component": "ArrayTable.MoveUp",
+                                  "x-designable-id": "6jhp7snr6db",
+                                  "x-index": 2,
+                                },
+                              },
+                            },
+                          },
+                        },
+                        properties: {
+                          gdw2y7ajrz4: {
+                            type: "void",
+                            title: "Addition",
+                            "x-component": "ArrayTable.Addition",
+                            "x-component-props": {},
+                            "x-designable-id": "gdw2y7ajrz4",
+                            "x-index": 0,
+                          },
+                        },
+                      },
+                    },
                   },
                 },
               },
@@ -264,123 +282,6 @@ export const schema = {
                     "x-index": 1,
                     name: "catalystMixtureRatio",
                   },
-                  promoters: {
-                    type: "array",
-                    "x-decorator": "FormItem",
-                    "x-component": "ArrayTable",
-                    "x-validator": [],
-                    "x-component-props": {},
-                    "x-decorator-props": {
-                      labelWrap: false,
-                      inset: false,
-                      wrapperWrap: false,
-                      fullness: false,
-                      wrapperAlign: "left",
-                      labelAlign: "left",
-                      layout: "vertical",
-                      size: "large",
-                      tooltip:
-                        "固定结构，成对出现。会有多对prompters数据的情况",
-                    },
-                    "x-designable-id": "39g6oqlewo9",
-                    "x-index": 2,
-                    title: "Promoters",
-                    name: "promoters",
-                    items: {
-                      type: "object",
-                      "x-designable-id": "ns5t8sfvfl3",
-                      properties: {
-                        xvqme75zjjd: {
-                          type: "void",
-                          "x-component": "ArrayTable.Column",
-                          "x-component-props": {
-                            title: "Name",
-                          },
-                          "x-designable-id": "xvqme75zjjd",
-                          "x-index": 0,
-                          properties: {
-                            name: {
-                              type: "string",
-                              "x-decorator": "FormItem",
-                              "x-component": "Input",
-                              "x-validator": [],
-                              "x-component-props": {
-                                placeholder:
-                                  "eg: Iron(III) nitrate / Mn / Hf(OTf)4",
-                              },
-                              "x-decorator-props": {},
-                              name: "name",
-                              "x-designable-id": "bip4s13gftj",
-                              "x-index": 0,
-                            },
-                          },
-                        },
-                        jmikm9fhmek: {
-                          type: "void",
-                          "x-component": "ArrayTable.Column",
-                          "x-component-props": {
-                            title: "Role",
-                          },
-                          "x-designable-id": "jmikm9fhmek",
-                          "x-index": 1,
-                          properties: {
-                            role: {
-                              type: "string",
-                              "x-decorator": "FormItem",
-                              "x-component": "Input",
-                              "x-validator": [],
-                              "x-component-props": {
-                                placeholder:
-                                  "eg: cocatalyst / promoter / modifier",
-                              },
-                              "x-decorator-props": {},
-                              name: "role",
-                              "x-designable-id": "dq3yi7ovahd",
-                              "x-index": 0,
-                            },
-                          },
-                        },
-                        jqlc5j51qgx: {
-                          type: "void",
-                          "x-component": "ArrayTable.Column",
-                          "x-component-props": {
-                            title: "Operations",
-                          },
-                          "x-designable-id": "jqlc5j51qgx",
-                          "x-index": 2,
-                          properties: {
-                            "98i4a3nmpir": {
-                              type: "void",
-                              "x-component": "ArrayTable.Remove",
-                              "x-designable-id": "98i4a3nmpir",
-                              "x-index": 0,
-                            },
-                            krvai6b92vb: {
-                              type: "void",
-                              "x-component": "ArrayTable.MoveDown",
-                              "x-designable-id": "krvai6b92vb",
-                              "x-index": 1,
-                            },
-                            mgquohagoid: {
-                              type: "void",
-                              "x-component": "ArrayTable.MoveUp",
-                              "x-designable-id": "mgquohagoid",
-                              "x-index": 2,
-                            },
-                          },
-                        },
-                      },
-                    },
-                    properties: {
-                      fkcyjx1y6ft: {
-                        type: "void",
-                        title: "Addition",
-                        "x-component": "ArrayTable.Addition",
-                        "x-designable-id": "fkcyjx1y6ft",
-                        "x-index": 0,
-                      },
-                    },
-                  },
                   betSurfaceArea: {
                     type: "string",
                     title: "Bet Surface Area",
@@ -395,7 +296,7 @@ export const schema = {
                     },
                     name: "betSurfaceArea",
                     "x-designable-id": "1wx0imp3j4e",
-                    "x-index": 3,
+                    "x-index": 2,
                   },
                   turnoverFrequency: {
                     type: "string",
@@ -411,7 +312,7 @@ export const schema = {
                     },
                     name: "turnoverFrequency",
                     "x-designable-id": "uatjp2mld9p",
-                    "x-index": 4,
+                    "x-index": 3,
                   },
                   loading: {
                     type: "string",
@@ -427,7 +328,7 @@ export const schema = {
                     },
                     name: "loading",
                     "x-designable-id": "3no7x16fm4q",
-                    "x-index": 5,
+                    "x-index": 4,
                   },
                   support: {
                     type: "string",
@@ -443,7 +344,7 @@ export const schema = {
                     },
                     name: "support",
                     "x-designable-id": "g9zylfwtbjz",
-                    "x-index": 6,
+                    "x-index": 5,
                   },
                   shape: {
                     type: "string",
@@ -459,7 +360,7 @@ export const schema = {
                     },
                     name: "shape",
                     "x-designable-id": "mhgrd5km1op",
-                    "x-index": 7,
+                    "x-index": 6,
                   },
                   poreSize: {
                     type: "string",
@@ -475,7 +376,7 @@ export const schema = {
                     },
                     name: "poreSize",
                     "x-designable-id": "zcdpx7u3fx5",
-                    "x-index": 8,
+                    "x-index": 7,
                   },
                   poreVolume: {
                     type: "string",
@@ -491,7 +392,7 @@ export const schema = {
                     },
                     name: "poreVolume",
                     "x-designable-id": "6yeg1p8v2y6",
-                    "x-index": 9,
+                    "x-index": 8,
                   },
                   preparationMethod: {
                     type: "string",
@@ -508,7 +409,7 @@ export const schema = {
                     },
                     name: "preparationMethod",
                     "x-designable-id": "ipq88ak8uhv",
-                    "x-index": 10,
+                    "x-index": 9,
                   },
                   udal3vfymn5: {
                     type: "void",
@@ -537,8 +438,22 @@ export const schema = {
                       },
                     },
                     "x-designable-id": "udal3vfymn5",
-                    "x-index": 11,
+                    "x-index": 10,
                     properties: {
+                      q09i1h67bdb: {
+                        type: "string",
+                        "x-component": "Text",
+                        "x-component-props": {
+                          mode: "h3",
+                          content: "For thermal catalysis",
+                          style: {
+                            fontStyle: "italic",
+                            color: "rgba(153,153,153,1)",
+                          },
+                        },
+                        "x-designable-id": "q09i1h67bdb",
+                        "x-index": 0,
+                      },
                       acidityAndBasicity: {
                         type: "string",
                         title: "Acidity And Basicity",
@@ -569,7 +484,7 @@ export const schema = {
                           },
                         },
                         "x-designable-id": "0nstqvfx0ii",
-                        "x-index": 0,
+                        "x-index": 1,
                       },
                       metalOxidationStates: {
                         type: "array",
@@ -590,7 +505,7 @@ export const schema = {
                             "固定结构，成对出现。会有多对金属氧化态比例数据的情况",
                         },
                         "x-designable-id": "d2kr81zjyr2",
-                        "x-index": 1,
+                        "x-index": 2,
                         title: "Metal Oxidation States",
                         name: "metalOxidationStates",
                         "x-reactions": {
@@ -727,6 +642,139 @@ export const schema = {
                       },
                     },
                   },
+                  "6lsqwzdzm75": {
+                    type: "void",
+                    "x-component": "FormLayout",
+                    "x-component-props": {
+                      style: {
+                        borderTopColor: "rgba(224,224,224,1)",
+                        borderTopStyle: "solid",
+                        borderTopWidth: "1px",
+                        padding: "20px 0px 0px 0px",
+                      },
+                    },
+                    "x-designable-id": "6lsqwzdzm75",
+                    "x-index": 11,
+                    properties: {
+                      promoters: {
+                        type: "array",
+                        "x-decorator": "FormItem",
+                        "x-component": "ArrayTable",
+                        "x-validator": [],
+                        "x-component-props": {},
+                        "x-decorator-props": {
+                          labelWrap: false,
+                          inset: false,
+                          wrapperWrap: false,
+                          fullness: false,
+                          wrapperAlign: "left",
+                          labelAlign: "left",
+                          layout: "vertical",
+                          size: "large",
+                          tooltip:
+                            "固定结构，成对出现。会有多对prompters数据的情况",
+                        },
+                        "x-designable-id": "39g6oqlewo9",
+                        "x-index": 0,
+                        title: "Promoters",
+                        name: "promoters",
+                        items: {
+                          type: "object",
+                          "x-designable-id": "ns5t8sfvfl3",
+                          properties: {
+                            xvqme75zjjd: {
+                              type: "void",
+                              "x-component": "ArrayTable.Column",
+                              "x-component-props": {
+                                title: "Name",
+                              },
+                              "x-designable-id": "xvqme75zjjd",
+                              "x-index": 0,
+                              properties: {
+                                name: {
+                                  type: "string",
+                                  "x-decorator": "FormItem",
+                                  "x-component": "Input",
+                                  "x-validator": [],
+                                  "x-component-props": {
+                                    placeholder:
+                                      "eg: Iron(III) nitrate / Mn / Hf(OTf)4",
+                                  },
+                                  "x-decorator-props": {},
+                                  name: "name",
+                                  "x-designable-id": "bip4s13gftj",
+                                  "x-index": 0,
+                                },
+                              },
+                            },
+                            jmikm9fhmek: {
+                              type: "void",
+                              "x-component": "ArrayTable.Column",
+                              "x-component-props": {
+                                title: "Role",
+                              },
+                              "x-designable-id": "jmikm9fhmek",
+                              "x-index": 1,
+                              properties: {
+                                role: {
+                                  type: "string",
+                                  "x-decorator": "FormItem",
+                                  "x-component": "Input",
+                                  "x-validator": [],
+                                  "x-component-props": {
+                                    placeholder:
+                                      "eg: cocatalyst / promoter / modifier",
+                                  },
+                                  "x-decorator-props": {},
+                                  name: "role",
+                                  "x-designable-id": "dq3yi7ovahd",
+                                  "x-index": 0,
+                                },
+                              },
+                            },
+                            jqlc5j51qgx: {
+                              type: "void",
+                              "x-component": "ArrayTable.Column",
+                              "x-component-props": {
+                                title: "Operations",
+                              },
+                              "x-designable-id": "jqlc5j51qgx",
+                              "x-index": 2,
+                              properties: {
+                                "98i4a3nmpir": {
+                                  type: "void",
+                                  "x-component": "ArrayTable.Remove",
+                                  "x-designable-id": "98i4a3nmpir",
+                                  "x-index": 0,
+                                },
+                                krvai6b92vb: {
+                                  type: "void",
+                                  "x-component": "ArrayTable.MoveDown",
+                                  "x-designable-id": "krvai6b92vb",
+                                  "x-index": 1,
+                                },
+                                mgquohagoid: {
+                                  type: "void",
+                                  "x-component": "ArrayTable.MoveUp",
+                                  "x-designable-id": "mgquohagoid",
+                                  "x-index": 2,
+                                },
+                              },
+                            },
+                          },
+                        },
+                        properties: {
+                          fkcyjx1y6ft: {
+                            type: "void",
+                            title: "Addition",
+                            "x-component": "ArrayTable.Addition",
+                            "x-designable-id": "fkcyjx1y6ft",
+                            "x-index": 0,
+                          },
+                        },
+                      },
+                    },
+                  },
                 },
               },
             },
@@ -762,117 +810,6 @@ export const schema = {
                     "x-designable-id": "5dk8b3aryt0",
                     "x-index": 0,
                   },
-                  gases: {
-                    type: "array",
-                    "x-decorator": "FormItem",
-                    "x-component": "ArrayTable",
-                    "x-validator": [],
-                    "x-component-props": {},
-                    "x-decorator-props": {
-                      layout: "vertical",
-                      labelAlign: "left",
-                      size: "default",
-                      labelWrap: false,
-                      tooltip:
-                        "name：具体命名或称谓（包括参与反应的与不参与反应的平衡气体）；  pressure：一个gas对应一个pressu。pressure值为数值+单位。",
-                    },
-                    "x-designable-id": "xdb77pq5h5o",
-                    "x-index": 1,
-                    title: "Gases",
-                    name: "gases",
-                    items: {
-                      type: "object",
-                      "x-designable-id": "3qipci9fyxz",
-                      properties: {
-                        ng8x8if164f: {
-                          type: "void",
-                          "x-component": "ArrayTable.Column",
-                          "x-component-props": {
-                            title: "Name",
-                          },
-                          "x-designable-id": "ng8x8if164f",
-                          "x-index": 0,
-                          properties: {
-                            name: {
-                              type: "string",
-                              "x-decorator": "FormItem",
-                              "x-component": "Input",
-                              "x-validator": [],
-                              "x-component-props": {
-                                placeholder: "eg: N2",
-                              },
-                              "x-decorator-props": {},
-                              name: "name",
-                              "x-designable-id": "f9bg08lator",
-                              "x-index": 0,
-                            },
-                          },
-                        },
-                        boxk1gu9pck: {
-                          type: "void",
-                          "x-component": "ArrayTable.Column",
-                          "x-component-props": {
-                            title: "Pressure",
-                          },
-                          "x-designable-id": "boxk1gu9pck",
-                          "x-index": 1,
-                          properties: {
-                            pressure: {
-                              type: "string",
-                              "x-decorator": "FormItem",
-                              "x-component": "Input",
-                              "x-validator": [],
-                              "x-component-props": {
-                                placeholder: "eg: 2 atm / 5.2 bar / 0.05 mpa",
-                              },
-                              "x-decorator-props": {},
-                              name: "pressure",
-                              "x-designable-id": "tev4h68m0or",
-                              "x-index": 0,
-                            },
-                          },
-                        },
-                        qast7dhgzhy: {
-                          type: "void",
-                          "x-component": "ArrayTable.Column",
-                          "x-component-props": {
-                            title: "Operations",
-                          },
-                          "x-designable-id": "qast7dhgzhy",
-                          "x-index": 2,
-                          properties: {
-                            "47891unqm57": {
-                              type: "void",
-                              "x-component": "ArrayTable.Remove",
-                              "x-designable-id": "47891unqm57",
-                              "x-index": 0,
-                            },
-                            "1goahcgzr63": {
-                              type: "void",
-                              "x-component": "ArrayTable.MoveDown",
-                              "x-designable-id": "1goahcgzr63",
-                              "x-index": 1,
-                            },
-                            ks3f6f3v81h: {
-                              type: "void",
-                              "x-component": "ArrayTable.MoveUp",
-                              "x-designable-id": "ks3f6f3v81h",
-                              "x-index": 2,
-                            },
-                          },
-                        },
-                      },
-                    },
-                    properties: {
-                      h1nlne63dr0: {
-                        type: "void",
-                        title: "Addition",
-                        "x-component": "ArrayTable.Addition",
-                        "x-designable-id": "h1nlne63dr0",
-                        "x-index": 0,
-                      },
-                    },
-                  },
                   temperature: {
                     type: "string",
                     title: "Temperature",
@@ -887,7 +824,7 @@ export const schema = {
                     },
                     name: "temperature",
                     "x-designable-id": "7mzd7xr4sab",
-                    "x-index": 2,
+                    "x-index": 1,
                   },
                   reactionTime: {
                     type: "string",
@@ -903,7 +840,7 @@ export const schema = {
                     },
                     name: "reactionTime",
                     "x-designable-id": "k0wan7319hf",
-                    "x-index": 3,
+                    "x-index": 2,
                   },
                   "1td82j11hqo": {
                     type: "void",
@@ -935,8 +872,22 @@ export const schema = {
                       },
                     },
                     "x-designable-id": "1td82j11hqo",
-                    "x-index": 4,
+                    "x-index": 3,
                     properties: {
+                      hv782a7dnxq: {
+                        type: "string",
+                        "x-component": "Text",
+                        "x-component-props": {
+                          mode: "h3",
+                          content: "For photocatalysis",
+                          style: {
+                            fontStyle: "italic",
+                            color: "rgba(153,153,153,1)",
+                          },
+                        },
+                        "x-designable-id": "hv782a7dnxq",
+                        "x-index": 0,
+                      },
                       lightSource: {
                         type: "string",
                         title: "Light Source",
@@ -952,7 +903,7 @@ export const schema = {
                         },
                         name: "lightSource",
                         "x-designable-id": "9xrsdj8i4ch",
-                        "x-index": 0,
+                        "x-index": 1,
                       },
                       lightWavelength: {
                         type: "string",
@@ -969,7 +920,7 @@ export const schema = {
                         },
                         name: "lightWavelength",
                         "x-designable-id": "q6tjb47fx78",
-                        "x-index": 1,
+                        "x-index": 2,
                       },
                       quantumEfficiency: {
                         type: "string",
@@ -985,7 +936,7 @@ export const schema = {
                         },
                         name: "quantumEfficiency",
                         "x-designable-id": "e3d1kmf67sx",
-                        "x-index": 2,
+                        "x-index": 3,
                       },
                     },
                   },
@@ -1019,8 +970,23 @@ export const schema = {
                       },
                     },
                     "x-designable-id": "n7wp5s6264u",
-                    "x-index": 5,
+                    "x-index": 4,
                     properties: {
+                      "7ks8x64gm1d": {
+                        type: "string",
+                        "x-component": "Text",
+                        "x-component-props": {
+                          mode: "h3",
+                          content: "For electorcatalysis\n",
+                          style: {
+                            fontStyle: "italic",
+                            fontWeight: 0,
+                            color: "rgba(153,153,153,1)",
+                          },
+                        },
+                        "x-designable-id": "7ks8x64gm1d",
+                        "x-index": 0,
+                      },
                       electrodeMaterial: {
                         type: "string",
                         title: "Electrode Material",
@@ -1036,7 +1002,7 @@ export const schema = {
                         },
                         name: "electrodeMaterial",
                         "x-designable-id": "zckcxm2l13e",
-                        "x-index": 0,
+                        "x-index": 1,
                       },
                       appliedPotential: {
                         type: "string",
@@ -1053,7 +1019,7 @@ export const schema = {
                         },
                         name: "appliedPotential",
                         "x-designable-id": "kj3n3iug66q",
-                        "x-index": 1,
+                        "x-index": 2,
                       },
                       currentDensity: {
                         type: "string",
@@ -1069,7 +1035,7 @@ export const schema = {
                         },
                         name: "currentDensity",
                         "x-designable-id": "8y9axj0ttnt",
-                        "x-index": 2,
+                        "x-index": 3,
                       },
                       referenceElectrode: {
                         type: "string",
@@ -1086,7 +1052,7 @@ export const schema = {
                         },
                         name: "referenceElectrode",
                         "x-designable-id": "98o1pibzups",
-                        "x-index": 3,
+                        "x-index": 4,
                       },
                       counterElectrode: {
                         type: "string",
@@ -1103,7 +1069,7 @@ export const schema = {
                         },
                         name: "counterElectrode",
                         "x-designable-id": "urc722wumt9",
-                        "x-index": 4,
+                        "x-index": 5,
                       },
                       energyConversionEfficiency: {
                         type: "string",
@@ -1119,7 +1085,135 @@ export const schema = {
                         },
                         name: "energyConversionEfficiency",
                         "x-designable-id": "1v3qyq1yl2l",
-                        "x-index": 5,
+                        "x-index": 6,
+                      },
+                    },
+                  },
+                  vcb9vmi65p6: {
+                    type: "void",
+                    "x-component": "FormLayout",
+                    "x-component-props": {
+                      style: {
+                        borderTopColor: "rgba(224,224,224,1)",
+                        borderTopStyle: "solid",
+                        borderTopWidth: "1px",
+                        padding: "20px 0px 0px 0px",
+                      },
+                    },
+                    "x-designable-id": "vcb9vmi65p6",
+                    "x-index": 5,
+                    properties: {
+                      gases: {
+                        type: "array",
+                        "x-decorator": "FormItem",
+                        "x-component": "ArrayTable",
+                        "x-validator": [],
+                        "x-component-props": {},
+                        "x-decorator-props": {
+                          layout: "vertical",
+                          labelAlign: "left",
+                          size: "default",
+                          labelWrap: false,
+                          tooltip:
+                            "name：具体命名或称谓（包括参与反应的与不参与反应的平衡气体）；  pressure：一个gas对应一个pressu。pressure值为数值+单位。",
+                        },
+                        "x-designable-id": "xdb77pq5h5o",
+                        "x-index": 0,
+                        title: "Gases",
+                        name: "gases",
+                        items: {
+                          type: "object",
+                          "x-designable-id": "3qipci9fyxz",
+                          properties: {
+                            ng8x8if164f: {
+                              type: "void",
+                              "x-component": "ArrayTable.Column",
+                              "x-component-props": {
+                                title: "Name",
+                              },
+                              "x-designable-id": "ng8x8if164f",
+                              "x-index": 0,
+                              properties: {
+                                name: {
+                                  type: "string",
+                                  "x-decorator": "FormItem",
+                                  "x-component": "Input",
+                                  "x-validator": [],
+                                  "x-component-props": {
+                                    placeholder: "eg: N2",
+                                  },
+                                  "x-decorator-props": {},
+                                  name: "name",
+                                  "x-designable-id": "f9bg08lator",
+                                  "x-index": 0,
+                                },
+                              },
+                            },
+                            boxk1gu9pck: {
+                              type: "void",
+                              "x-component": "ArrayTable.Column",
+                              "x-component-props": {
+                                title: "Pressure",
+                              },
+                              "x-designable-id": "boxk1gu9pck",
+                              "x-index": 1,
+                              properties: {
+                                pressure: {
+                                  type: "string",
+                                  "x-decorator": "FormItem",
+                                  "x-component": "Input",
+                                  "x-validator": [],
+                                  "x-component-props": {
+                                    placeholder:
+                                      "eg: 2 atm / 5.2 bar / 0.05 mpa",
+                                  },
+                                  "x-decorator-props": {},
+                                  name: "pressure",
+                                  "x-designable-id": "tev4h68m0or",
+                                  "x-index": 0,
+                                },
+                              },
+                            },
+                            qast7dhgzhy: {
+                              type: "void",
+                              "x-component": "ArrayTable.Column",
+                              "x-component-props": {
+                                title: "Operations",
+                              },
+                              "x-designable-id": "qast7dhgzhy",
+                              "x-index": 2,
+                              properties: {
+                                "47891unqm57": {
+                                  type: "void",
+                                  "x-component": "ArrayTable.Remove",
+                                  "x-designable-id": "47891unqm57",
+                                  "x-index": 0,
+                                },
+                                "1goahcgzr63": {
+                                  type: "void",
+                                  "x-component": "ArrayTable.MoveDown",
+                                  "x-designable-id": "1goahcgzr63",
+                                  "x-index": 1,
+                                },
+                                ks3f6f3v81h: {
+                                  type: "void",
+                                  "x-component": "ArrayTable.MoveUp",
+                                  "x-designable-id": "ks3f6f3v81h",
+                                  "x-index": 2,
+                                },
+                              },
+                            },
+                          },
+                        },
+                        properties: {
+                          h1nlne63dr0: {
+                            type: "void",
+                            title: "Addition",
+                            "x-component": "ArrayTable.Addition",
+                            "x-designable-id": "h1nlne63dr0",
+                            "x-index": 0,
+                          },
+                        },
                       },
                     },
                   },
@@ -1146,118 +1240,6 @@ export const schema = {
                 "x-index": 0,
                 name: "solvents",
                 properties: {
-                  solvents: {
-                    type: "array",
-                    "x-decorator": "FormItem",
-                    "x-component": "ArrayTable",
-                    "x-validator": [],
-                    "x-component-props": {},
-                    "x-decorator-props": {
-                      layout: "vertical",
-                      labelAlign: "left",
-                      tooltip:
-                        "Name：所有和溶剂、溶质相关的用量，比例，浓度等，需要和amount成对出现；  Amount：值为数值+单位。可以为浓度，体积，质量等。",
-                    },
-                    "x-designable-id": "ucgi67fwv20",
-                    "x-index": 0,
-                    name: "solvents",
-                    title: "Solvents",
-                    items: {
-                      type: "object",
-                      "x-designable-id": "6f2habdqh5h",
-                      properties: {
-                        og50z6kefqz: {
-                          type: "void",
-                          "x-component": "ArrayTable.Column",
-                          "x-component-props": {
-                            title: "Name",
-                          },
-                          "x-designable-id": "og50z6kefqz",
-                          "x-index": 0,
-                          properties: {
-                            name: {
-                              type: "string",
-                              "x-decorator": "FormItem",
-                              "x-component": "Input",
-                              "x-validator": [],
-                              "x-component-props": {
-                                placeholder:
-                                  "eg: H2O / toluene / CH3CN / MeCN / DMF / THF",
-                              },
-                              "x-decorator-props": {},
-                              name: "name",
-                              "x-designable-id": "hncjlbpjsdw",
-                              "x-index": 0,
-                            },
-                          },
-                        },
-                        "7gbqy0q6dap": {
-                          type: "void",
-                          "x-component": "ArrayTable.Column",
-                          "x-component-props": {
-                            title: "Amount",
-                          },
-                          "x-designable-id": "7gbqy0q6dap",
-                          "x-index": 1,
-                          properties: {
-                            amount: {
-                              type: "string",
-                              "x-decorator": "FormItem",
-                              "x-component": "Input",
-                              "x-validator": [],
-                              "x-component-props": {
-                                placeholder:
-                                  "eg: 100 mL / 0.05M,  0.2g /  5%,  20 mmol  /  2.5%",
-                              },
-                              "x-decorator-props": {},
-                              name: "amount",
-                              "x-designable-id": "yxtyftmdo7d",
-                              "x-index": 0,
-                            },
-                          },
-                        },
-                        bybtqbiyk44: {
-                          type: "void",
-                          "x-component": "ArrayTable.Column",
-                          "x-component-props": {
-                            title: "Title",
-                          },
-                          "x-designable-id": "bybtqbiyk44",
-                          "x-index": 2,
-                          properties: {
-                            n6wroq89iii: {
-                              type: "void",
-                              "x-component": "ArrayTable.Remove",
-                              "x-designable-id": "n6wroq89iii",
-                              "x-index": 0,
-                            },
-                            "4l8fjqpug0e": {
-                              type: "void",
-                              "x-component": "ArrayTable.MoveDown",
-                              "x-designable-id": "4l8fjqpug0e",
-                              "x-index": 1,
-                            },
-                            zrw1jx8iipo: {
-                              type: "void",
-                              "x-component": "ArrayTable.MoveUp",
-                              "x-designable-id": "zrw1jx8iipo",
-                              "x-index": 2,
-                            },
-                          },
-                        },
-                      },
-                    },
-                    properties: {
-                      vp7dqa5cniy: {
-                        type: "void",
-                        title: "Addition",
-                        "x-component": "ArrayTable.Addition",
-                        "x-designable-id": "vp7dqa5cniy",
-                        "x-index": 0,
-                        "x-component-props": {},
-                      },
-                    },
-                  },
                   pH: {
                     type: "string",
                     title: "pH",
@@ -1273,7 +1255,141 @@ export const schema = {
                     },
                     name: "pH",
                     "x-designable-id": "k8o3sex85mc",
+                    "x-index": 0,
+                  },
+                  cv6l13s3vws: {
+                    type: "void",
+                    "x-component": "FormLayout",
+                    "x-component-props": {
+                      style: {
+                        borderTopStyle: "solid",
+                        borderTopWidth: "1px",
+                        padding: "20px 0px 0px 0px",
+                        borderTopColor: "rgba(224,224,224,1)",
+                      },
+                    },
+                    "x-designable-id": "cv6l13s3vws",
                     "x-index": 1,
+                    properties: {
+                      solvents: {
+                        type: "array",
+                        "x-decorator": "FormItem",
+                        "x-component": "ArrayTable",
+                        "x-validator": [],
+                        "x-component-props": {
+                          style: {
+                            borderTopStyle: "none",
+                            borderTopColor: "",
+                            padding: "0px 0px 0px 0px",
+                          },
+                        },
+                        "x-decorator-props": {
+                          layout: "vertical",
+                          labelAlign: "left",
+                          tooltip:
+                            "Name：所有和溶剂、溶质相关的用量，比例，浓度等，需要和amount成对出现；  Amount：值为数值+单位。可以为浓度，体积，质量等。",
+                        },
+                        "x-designable-id": "ucgi67fwv20",
+                        "x-index": 0,
+                        name: "solvents",
+                        title: "Solvents",
+                        items: {
+                          type: "object",
+                          "x-designable-id": "6f2habdqh5h",
+                          properties: {
+                            og50z6kefqz: {
+                              type: "void",
+                              "x-component": "ArrayTable.Column",
+                              "x-component-props": {
+                                title: "Name",
+                              },
+                              "x-designable-id": "og50z6kefqz",
+                              "x-index": 0,
+                              properties: {
+                                name: {
+                                  type: "string",
+                                  "x-decorator": "FormItem",
+                                  "x-component": "Input",
+                                  "x-validator": [],
+                                  "x-component-props": {
+                                    placeholder:
+                                      "eg: H2O / toluene / CH3CN / MeCN / DMF / THF",
+                                  },
+                                  "x-decorator-props": {},
+                                  name: "name",
+                                  "x-designable-id": "hncjlbpjsdw",
+                                  "x-index": 0,
+                                },
+                              },
+                            },
+                            "7gbqy0q6dap": {
+                              type: "void",
+                              "x-component": "ArrayTable.Column",
+                              "x-component-props": {
+                                title: "Amount",
+                              },
+                              "x-designable-id": "7gbqy0q6dap",
+                              "x-index": 1,
+                              properties: {
+                                amount: {
+                                  type: "string",
+                                  "x-decorator": "FormItem",
+                                  "x-component": "Input",
+                                  "x-validator": [],
+                                  "x-component-props": {
+                                    placeholder:
+                                      "eg: 100 mL / 0.05M,  0.2g /  5%,  20 mmol  /  2.5%",
+                                  },
+                                  "x-decorator-props": {},
+                                  name: "amount",
+                                  "x-designable-id": "yxtyftmdo7d",
+                                  "x-index": 0,
+                                },
+                              },
+                            },
+                            bybtqbiyk44: {
+                              type: "void",
+                              "x-component": "ArrayTable.Column",
+                              "x-component-props": {
+                                title: "Title",
+                              },
+                              "x-designable-id": "bybtqbiyk44",
+                              "x-index": 2,
+                              properties: {
+                                n6wroq89iii: {
+                                  type: "void",
+                                  "x-component": "ArrayTable.Remove",
+                                  "x-designable-id": "n6wroq89iii",
+                                  "x-index": 0,
+                                },
+                                "4l8fjqpug0e": {
+                                  type: "void",
+                                  "x-component": "ArrayTable.MoveDown",
+                                  "x-designable-id": "4l8fjqpug0e",
+                                  "x-index": 1,
+                                },
+                                zrw1jx8iipo: {
+                                  type: "void",
+                                  "x-component": "ArrayTable.MoveUp",
+                                  "x-designable-id": "zrw1jx8iipo",
+                                  "x-index": 2,
+                                },
+                              },
+                            },
+                          },
+                        },
+                        properties: {
+                          vp7dqa5cniy: {
+                            type: "void",
+                            title: "Addition",
+                            "x-component": "ArrayTable.Addition",
+                            "x-designable-id": "vp7dqa5cniy",
+                            "x-index": 0,
+                            "x-component-props": {},
+                          },
+                        },
+                      },
+                    },
                   },
                 },
               },
@@ -1501,6 +1617,6 @@ export const schema = {
         },
       },
     },
-    "x-designable-id": "ow4d9ydqhlr",
+    "x-designable-id": "mvw78bdxsx7",
   },
 };
