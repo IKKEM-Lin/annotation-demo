@@ -310,10 +310,11 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({ fileUrl, initialRea
     currentReactionIndex !== -1 ? reactions[currentReactionIndex].color : "";
 
   const createNewReaction = (value?: any) => {
+    const fileName = fileUrl.split("/").pop();
     const newReactions = reactions.concat([
       {
         color: getNewColor(reactions.map((r) => r.color)),
-        id: `reaction-${getRandomString()}`,
+        id: `${fileName}-reaction-${getRandomString()}`,
         hidden: false,
         notes: [],
         value: value || {},
