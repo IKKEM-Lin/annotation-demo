@@ -323,6 +323,23 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({ fileUrl, initialRea
     setCurrentSelected(newReactions[newReactions.length - 1].id);
   }
 
+  const handleChange = (value: Record<string, any>, r_id: string) => {
+    // the reactions is the old state
+    // so get latest state from local storage
+    // TODO: find the reason and avoid using local storage
+    const storeReactions: any[] = JSON.parse(localStorage.getItem("reactions") || "[]");
+    const newReactions = storeReactions.map((reaction) => {
+      if (r_id === reaction.id) {
+        return {
+          ...reaction,
+          value,
+        };
+      }
+      return reaction;
+    });
+    setReactions(newReactions);
+  };
+
   return (
     <div
       style={{
@@ -505,18 +522,7 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({ fileUrl, initialRea
                       <Formily
                         schema={schema}
                         value={r.value || {}}
-                        onChange={(value) => {
-                          const newReactions = reactions.map((reaction) => {
-                            if (r.id === reaction.id) {
-                              return {
-                                ...reaction,
-                                value,
-                              };
-                            }
-                            return reaction;
-                          });
-                          setReactions(newReactions);
-                        }}
+                        onChange={value => handleChange(value, r.id)}
                       />
                     </>
                   ),
