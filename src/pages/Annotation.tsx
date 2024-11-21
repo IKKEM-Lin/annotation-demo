@@ -59,7 +59,7 @@ const Annotation = () => {
       dataIndex: "assign",
       hideInSearch: true,
       width: 240,
-      render: (text, record) => {
+      render: (_, record) => {
         return (
           <Popconfirm
             title="Confirm your operation?"
