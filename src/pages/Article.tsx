@@ -1,42 +1,47 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import type { ActionType, ProColumns } from "@ant-design/pro-components";
-import { ProTable, ProTableProps } from "@ant-design/pro-components";
-// import { Button, Popconfirm, Tooltip } from "antd";
-import { useRef, useState } from "react";
+import type { ProColumns } from "@ant-design/pro-components";
+import {
+  ProFormSelect,
+  ProFormText,
+  ProTable,
+  QueryFilter,
+} from "@ant-design/pro-components";
+import { useEffect, useState } from "react";
 import { OtherEndpointsService } from "../services/service";
-// import { components } from "../services/api-type";
-// import { waitTime } from "../util";
-// import { URL_SEARCH } from "../constant";
 import { Link } from "react-router-dom";
-import { Button, Flex, message } from "antd";
+import { Button, Flex, message, Popconfirm, Space, Tooltip } from "antd";
 import { userinfo } from "../valtio";
 import { useSnapshot } from "valtio";
-
+import {
+  ExportOutlined,
+  MinusOutlined,
+  PlusCircleOutlined,
+} from "@ant-design/icons";
 
 const Article = () => {
-  const actionRef = useRef<ActionType>();
   const [Loading, setLoading] = useState(false);
   const user = useSnapshot(userinfo);
+  const [data, setData] = useState<any[]>([]);
+  const [filter, setFilter] = useState<any>({});
 
-  const tableRequest: ProTableProps<any, any>["request"] = async () => {
-    //   console.log(params, sort, filter);
-    //   await waitTime(500);
-    //   const { current, pageSize, article_id } = params;
+  const fetchData = async () => {
     setLoading(true);
     const res = await OtherEndpointsService.getArticles();
     setLoading(false);
     const dois = Object.keys(res);
-    return {
-      data: dois.map((doi) => ({
-        doi,
-        title: res[doi].title,
-        publication: res[doi].publication,
-        assign: res[doi].assignee,
-      })),
-      success: true,
-    };
+    const data = dois.map((doi) => ({
+      doi,
+      title: res[doi].title,
+      publication: res[doi].publication,
+      assign: res[doi].assignee,
+    }));
+    setData(data);
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const columns: ProColumns<any>[] = [
     {
       title: "DOI",
@@ -44,10 +49,19 @@ const Article = () => {
       width: 280,
       hideInSearch: true,
       render: (text) => {
+        const linkUrl = `https://doi.org/${(text as any).replace(
+          /(10.\d+)_/,
+          "$1/"
+        )}`;
         return text ? (
-          <Link target="_blank" to={`https://doi.org/${(text as any).replace(/(10.\d+)_/, "$1/")}`}>
+          <Space>
             {(text as any).replace(/(10.\d+)_/, "$1/")}
-          </Link>
+            <Tooltip title="View paper source in new tab.">
+              <Link target="_blank" to={linkUrl}>
+                <ExportOutlined />
+              </Link>
+            </Tooltip>
+          </Space>
         ) : (
           "-"
         );
@@ -64,17 +78,17 @@ const Article = () => {
       title: "Operation",
       dataIndex: "assign",
       hideInSearch: true,
+      width: 240,
       render: (text, record) => {
-        console.log(text);
         const isAssigned = !!text && text !== "-";
         const isOwner = text === user.data?.username;
         return (
           <Flex>
-            <Button
-              disabled={isAssigned && !isOwner}
-              type={"link"}
-              color={isAssigned ? "danger" : "primary"}
-              onClick={async () => {
+            <Popconfirm
+              title="Confirm your operation?"
+              cancelText="No"
+              okText="Yes"
+              onConfirm={async () => {
                 try {
                   setLoading(true);
                   if (isAssigned) {
@@ -88,46 +102,98 @@ const Article = () => {
                     );
                     message.success("Get task success");
                   }
-                  actionRef.current?.reload();
+                  await fetchData();
                 } catch (error: any) {
                   console.error(error);
                   message.error("Error: ", error.message);
-                } finally {
                   setLoading(false);
                 }
               }}
             >
-              {isAssigned ? "Give up task" : "Get task"}
-            </Button>
+              <Button
+                disabled={isAssigned && !isOwner}
+                type={"link"}
+                // color={isAssigned ? "danger" : "primary"}
+                style={{ color: isAssigned && isOwner ? "#f81d22" : "" }}
+                onClick={async () => {}}
+                icon={isAssigned ? <MinusOutlined /> : <PlusCircleOutlined />}
+              >
+                {isAssigned ? "Give up task" : "Get task"}
+              </Button>
+            </Popconfirm>
           </Flex>
         );
       },
     },
   ];
   return (
-    <ProTable<any>
-      columns={columns}
-      actionRef={actionRef}
-      pagination={false}
-      toolBarRender={false}
-      loading={Loading}
-      request={tableRequest}
-      columnsState={{
-        persistenceKey: "pro-table-snippet",
-        persistenceType: "localStorage",
-        onChange() {
-          // console.log("value: ", value);
-        },
-      }}
-      rowKey="id"
-      search={false}
-      options={{
-        fullScreen: false,
-        setting: false,
-      }}
-      dateFormatter="string"
-      headerTitle=""
-    />
+    <>
+      <QueryFilter
+        onValuesChange={(changeValues) => {
+          setFilter({ ...filter, ...changeValues });
+        }}
+        span={6}
+        defaultCollapsed={false}
+        optionRender={false}
+      >
+        <ProFormText name="doi" label="DOI" initialValue="" />
+        <ProFormText name="title" label="Title" initialValue="" />
+        <ProFormSelect
+          name="type"
+          label="Type"
+          request={async () => [
+            { label: "All", value: "all" },
+            { label: "Available", value: "available" },
+            { label: "My task", value: "myTask" },
+          ]}
+          initialValue="all"
+        />
+      </QueryFilter>
+      <ProTable<any>
+        columns={columns}
+        // actionRef={actionRef}
+        dataSource={data.filter((item) => {
+          const { doi, title, type } = filter;
+          const doiTrim = doi?.trim();
+          const titleTrim = title?.trim();
+          if (doiTrim && !item.doi.includes(doiTrim)) {
+            return false;
+          }
+          if (titleTrim && !item.title.includes(titleTrim)) {
+            return false;
+          }
+          if (type === "available" && item.assign) {
+            return false;
+          }
+          if (
+            type === "myTask" &&
+            (!item.assign || item.assign !== user.data?.username)
+          ) {
+            return false;
+          }
+          return true;
+        })}
+        pagination={false}
+        toolBarRender={false}
+        loading={Loading}
+        // request={tableRequest}
+        columnsState={{
+          persistenceKey: "pro-table-snippet",
+          persistenceType: "localStorage",
+          onChange() {
+            // console.log("value: ", value);
+          },
+        }}
+        rowKey="id"
+        search={false}
+        options={{
+          fullScreen: false,
+          setting: false,
+        }}
+        dateFormatter="string"
+        headerTitle=""
+      />
+    </>
   );
 };
 
