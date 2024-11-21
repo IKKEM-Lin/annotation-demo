@@ -52,19 +52,19 @@ export const allRoutes = [
   },
   {
     path: "/article",
-    name: "Article",
+    name: "All Tasks",
     icon: <FileTextOutlined />,
     component: <Article />,
   },
   {
     path: "/article/:id",
-    name: "Article",
+    name: "Task Detail",
     hideInMenu: true,
     component: <ArticleDetail />,
   },
   {
     path: "/annotation",
-    name: "Annotation",
+    name: "My Tasks",
     icon: <FileDoneOutlined />,
     component: <Annotation />,
   },

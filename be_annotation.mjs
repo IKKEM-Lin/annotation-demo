@@ -9,6 +9,7 @@ if (!fs.existsSync(uploadDirectory)) {
   fs.mkdirSync(uploadDirectory);
 }
 
+
 const uploadJSON = async (data, article, username) => {
   // 为保存的 JSON 文件生成一个唯一的文件名
   const filename = `${Date.now()}.json`;
@@ -34,14 +35,14 @@ const getUserLatestUploads = async (username) => {
     return [];
   }
   const articles = fs.readdirSync(currentUserDirectory);
-  const result = [];
+  const result = {};
   // 返回用户上传的所有文件名,文件夹结构为：data/result/{username}/{article}/{username}-{timestamp}.json。返回的结构为：[{article: 最新的时间戳.json}]
   articles.forEach((article) => {
     const articleDirectory = path.join(currentUserDirectory, article);
     const files = fs.readdirSync(articleDirectory);
     // 通过文件名{username}-{timestamp}.json排序，取timestamp最新的文件
     const latestFile = files.sort().reverse()[0];
-    result.push({ [article]: latestFile });
+    result[article]={latestFile};
   });
   return result;
 }

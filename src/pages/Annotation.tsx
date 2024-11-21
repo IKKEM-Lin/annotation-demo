@@ -12,13 +12,13 @@ import { Link } from "react-router-dom";
 
 const columns: ProColumns<any>[] = [
   {
-    title: "Article",
+    title: "DOI",
     dataIndex: "article",
     // width: 48,
     hideInSearch: true,
     render: (text, record) => {
         return text ? (
-        <Link to={`/article/${text}?v=${record.filename}`}>{text}</Link>
+        <Link to={`/article/${text}.pdf?v=${record.filename || ""}`}>{text}</Link>
         ) : (
         "-"
         );
@@ -36,13 +36,13 @@ const tableRequest: ProTableProps<any, any>["request"] = async () => {
 //   await waitTime(500);
 //   const { current, pageSize, article_id } = params;
   const res = await FileEndpointsService.getUploadFiles();
+  const data = Object.keys(res).map((article) => {
+    const fileName = res[article]?.latestFile;
+    const updateTime = fileName && new Date(+fileName.split(".")[0]).toLocaleString();
+    return { article: article, filename: fileName, updateTime };
+  });
   return {
-    data: res.map(item => {
-      const article = Object.keys(item)[0];
-      const filename = item[article];
-      const updateTime = new Date(+filename.split(".")[0]).toLocaleString();
-      return {article: article, updateTime, filename};
-    }),
+    data: data,
     success: true,
   };
 };

@@ -32,9 +32,12 @@ const getDefaultUser = () => {
   });
 };
 
-// if not exits, create default user
+// if not exits, copy the default user from data_example/user.json
 if (!fs.existsSync(path.resolve("data", "user.json"))) {
-  fs.writeFileSync(path.resolve("data", "user.json"), getDefaultUser());
+  fs.copyFileSync(
+    path.resolve("data_example", "user.json"),
+    path.resolve("data", "user.json")
+  );
 }
 
 const db = await JSONFilePreset(

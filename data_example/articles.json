@@ -1,0 +1,530 @@
+{
+  "10.1038_ncomms13869": {
+    "title": "A metal-free electrocatalyst for carbon dioxide reduction to multi-carbon hydrocarbons and oxygenates",
+    "publication": "Nature Communications"
+  },
+  "10.1038_ncomms3448": {
+    "title": "Directing reaction pathways by catalyst active-site selection using self-assembled monolayers",
+    "publication": "Nature Communications"
+  },
+  "10.1038_ncomms5256": {
+    "title": "Regulating proton-coupled electron transfer for efficient water splitting by manganese oxides at neutral pH",
+    "publication": "Nature Communications"
+  },
+  "10.1038_ncomms5695": {
+    "title": "Nanoscale nickel oxide/nickel heterostructures for active hydrogen evolution electrocatalysis",
+    "publication": "Nature Communications"
+  },
+  "10.1038_ncomms9249": {
+    "title": "Covalency-reinforced oxygen evolution reaction catalyst",
+    "publication": "Nature Communications"
+  },
+  "10.1021_jacs.2c12590": {
+    "title": "Locking Effect in Metal@MOF with Superior Stability for Highly Chemoselective Catalysis",
+    "publication": "Journal of the American Chemical Society"
+  },
+  "10.1021_jacs.3c09290": {
+    "title": "Decarboxylation and Tandem Reduction/Decarboxylation Pathways to Substituted Phenols from Aromatic Carboxylic Acids Using Bimetallic Nanoparticles on Supported Ionic Liquid Phases as Multifunctional Catalysts",
+    "publication": "Journal of the American Chemical Society"
+  },
+  "10.1021_jacs.5b08212": {
+    "title": "Metal–Organic Frameworks for Electrocatalytic Reduction of Carbon Dioxide",
+    "publication": "Journal of the American Chemical Society"
+  },
+  "10.1021_jacs.6b04951": {
+    "title": "Product Selectivity Controlled by Zeolite Crystals in Biomass Hydrogenation over a Palladium Catalyst",
+    "publication": "Journal of the American Chemical Society"
+  },
+  "10.1002_anie.200460790": {
+    "title": "Renewable Olefins from Biodiesel by Autothermal Reforming†",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.200802540": {
+    "title": "Hydrodesulfurization of 4,6-Dimethyldibenzothiophene over Noble Metals Supported on Mesoporous Zeolites†",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.200805273": {
+    "title": "An Efficient Strategy to Drive Nanoparticles into Carbon Nanotubes and the Remarkable Effect of Confinement on Their Catalytic Performance†",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201006870": {
+    "title": "Enhancement of the Performance of a Platinum Nanocatalyst Confined within Carbon Nanotubes for Asymmetric Hydrogenation†",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201107113": {
+    "title": "Rod-Shaped Fe2O3as an Efficient Catalyst for the Selective Reduction of Nitrogen Oxide by Ammonia†",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201201999": {
+    "title": "Development of an O2-Sensitive Fluorescence-Quenching Assay for the Combinatorial Discovery of Electrocatalysts for Water Oxidation†",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201203066": {
+    "title": "Heterogeneous Synergistic Catalysis by a Palladium Complex and an Amine on a Silica Surface for Acceleration of the Tsuji–Trost Reaction†",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201301009": {
+    "title": "An Efficient CoAuPd/C Catalyst for Hydrogen Generation from Formic Acid at Room Temperature†",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201406354": {
+    "title": "Oxidation of Bioethanol using Zeolite-Encapsulated Gold Nanoparticles†",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201510655": {
+    "title": "Pd Nanocubes@ZIF-8: Integration of Plasmon-Driven Photothermal Conversion with a Metal–Organic Framework for Efficient and Selective Catalysis",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201511378": {
+    "title": "A Poly(cobaloxime)/Carbon Nanotube Electrode: Freestanding Buckypaper with Polymer-Enhanced H2-Evolution Performance",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201601038": {
+    "title": "Electrocatalytic and Solar-Driven CO2Reduction to CO with a Molecular Manganese Catalyst Immobilized on Mesoporous TiO2",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201604654": {
+    "title": "Selective and Efficient Reduction of Carbon Dioxide to Carbon Monoxide on Oxide-Derived Nanostructured Silver Electrocatalysts",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201608165": {
+    "title": "Selective Production of Carbon Monoxide via Methane Oxychlorination over Vanadyl Pyrophosphate",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201702196": {
+    "title": "The Ti3AlC2MAX Phase as an Efficient Catalyst for Oxidative Dehydrogenation of n-Butane",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201704704": {
+    "title": "Conversion of Methane into Methanol and Ethanol over Nickel Oxide on Ceria–Zirconia Catalysts in a Single Reactor",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201800557": {
+    "title": "Concerted Bimetallic Nanocluster Synthesis and Encapsulation via Induced Zeolite Framework Demetallation for Shape and Substrate Selective Heterogeneous Catalysis",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201800729": {
+    "title": "Selective Hydrogenation of CO2to Ethanol over Cobalt Catalysts",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201802792": {
+    "title": "A Hybrid Co Quaterpyridine Complex/Carbon Nanotube Catalytic Material for CO2Reduction in Water",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201803279": {
+    "title": "Bridging the Gap between the Direct and Hydrocarbon Pool Mechanisms of the Methanol-to-Hydrocarbons Process",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201805514": {
+    "title": "Ambient Electrosynthesis of Ammonia: Electrode Porosity and Composition Engineering",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201806298": {
+    "title": "Electrocatalytic Oxidation of 5-(Hydroxymethyl)furfural Using High-Surface-Area Nickel Boride",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201808049": {
+    "title": "In Situ Thermal Atomization To Convert Supported Nickel Nanoparticles into Surface-Bound Nickel Single-Atom Catalysts",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201809433": {
+    "title": "Absorptive Hydrogen Scavenging for Enhanced Aromatics Yield During Non-oxidative Methane Dehydroaromatization on Mo/H-ZSM-5 Catalysts",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201901171": {
+    "title": "In Situ Formation of Frustrated Lewis Pairs in a Water-Tolerant Metal-Organic Framework for the Transformation of CO2",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201902171": {
+    "title": "A Reusable MOF-Supported Single-Site Zinc(II) Catalyst for Efficient Intramolecular Hydroamination ofo-Alkynylanilines",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201903000": {
+    "title": "Direct Non-Oxidative Methane Conversion in a Millisecond Catalytic Wall Reactor",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201903936": {
+    "title": "Paired Electrocatalytic Oxygenation and Hydrogenation of Organic Substrates with Water as the Oxygen and Hydrogen Source",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201905567": {
+    "title": "Eye-Readable Detection and Oxidation of CO with a Platinum-Based Catalyst and a Binuclear Rhodium Complex",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201906256": {
+    "title": "Supported Intermetallic PdZn Nanoparticles as Bifunctional Catalysts for the Direct Synthesis of Dimethyl Ether from CO-Rich Synthesis Gas",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.201909551": {
+    "title": "The Critical Role of Reductive Steps in the Nickel-Catalyzed Hydrogenolysis and Hydrolysis of Aryl Ether C−O Bonds",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.202004092": {
+    "title": "Immobilization of an Iridium Pincer Complex in a Microporous Polymer for Application in Room-Temperature Gas Phase Catalysis",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.202004463": {
+    "title": "Controlling the Product Platform of Carbon Dioxide Reduction: Adaptive Catalytic Hydrosilylation of CO2Using a Molecular Cobalt(II) Triazine Complex",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.202004618": {
+    "title": "CO2Methanation via Amino Alcohol Relay Molecules Employing a Ruthenium Nanoparticle/Metal Organic Framework Catalyst",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.202009217": {
+    "title": "Single Atoms of Iron on MoS2Nanosheets for N2Electroreduction into Ammonia",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.202010535": {
+    "title": "Operando NRIXS and XAFS Investigation of Segregation Phenomena in Fe-Cu and Fe-Ag Nanoparticle Catalysts during CO2Electroreduction",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.202208163": {
+    "title": "sp-Carbon Incorporated Conductive Metal-Organic Framework as Photocathode for Photoelectrochemical Hydrogen Generation",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.202210857": {
+    "title": "Switchable Metal Sites in Metal–Organic Framework MFM-300(Sc): Lewis Acid Catalysis Driven by Metal–Hemilabile Linker Bond Dynamics",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.202213399": {
+    "title": "Chiral Frustrated Lewis Pair@Metal-Organic Framework as a New Platform for Heterogeneous Asymmetric Hydrogenation",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.202215057": {
+    "title": "Atomically Dispersed Nickel Anchored on a Nitrogen-Doped Carbon/TiO2Composite for Efficient and Selective Photocatalytic CH4Oxidation to Oxygenates",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.202216159": {
+    "title": "Visible-Light-Promoted Switchable Selective Oxidations of Styrene Over Covalent Triazine Frameworks in Water",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1002_anie.202217252": {
+    "title": "Enhanced Carbon Monoxide Electroreduction to >1 A cm−2C2+Products Using Copper Catalysts Dispersed on MgAl Layered Double Hydroxide Nanosheet House-of-Cards Scaffolds",
+    "publication": "Angewandte Chemie International Edition"
+  },
+  "10.1039_d3sc01054f": {
+    "title": "Role and dynamics of transition metal carbides in methane coupling",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d3sc01163a": {
+    "title": "The promotional role of Mn in CO2 hydrogenation over Rh-based catalysts from a surface organometallic chemistry approach",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d3sc03317a": {
+    "title": "Ultra-fast synthesis of three-dimensional porous Cu/Zn heterostructures for enhanced carbon dioxide electroreduction",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d3sc04418a": {
+    "title": "Spontaneous generation of singlet oxygen on microemulsion-derived manganese oxides with rich oxygen vacancies for efficient aerobic oxidation",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d3sc05275c": {
+    "title": "Using waste to treat waste: facile synthesis of hollow carbon nanospheres from lignin for water decontamination",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d2sc00038e": {
+    "title": "Boosting the electro-oxidation of 5-hydroxymethyl-furfural on a Co–CoSx heterojunction by intensified spin polarization",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d2sc01250b": {
+    "title": "Free-base porphyrin polymer for bifunctional electrochemical water splitting",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d2sc04729b": {
+    "title": "Multiple C–C bond formation upon electrocatalytic reduction of CO2 by an iron-based molecular macrocycle",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d2sc04961a": {
+    "title": "A crystal growth kinetics guided Cu aerogel for highly efficient CO2 electrolysis to C2+ alcohols",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d2sc05913d": {
+    "title": "Electrochemical oxidation of styrene to benzaldehyde by discrimination of spin-paired π electrons",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d2sc06599a": {
+    "title": "Free radicals promote electrocatalytic nitrogen oxidation",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d2sc06738b": {
+    "title": "Single-atom copper catalyst for the S-arylation reaction to produce diaryl disulfides",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d1sc00573a": {
+    "title": "Rational incorporation of defects within metal–organic frameworks generates highly active electrocatalytic sites",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d1sc01692j": {
+    "title": "Probe metal binding mode of imine covalent organic frameworks: cycloiridation for (photo)catalytic hydrogen evolution from formate",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d1sc02602j": {
+    "title": "Ensemble effects in Cu/Au ultrasmall nanoparticles control the branching point for C1 selectivity during CO2 electroreduction",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d1sc06045g": {
+    "title": "A BINOL-phosphoric acid and metalloporphyrin derived chiral covalent organic framework for enantioselective α-benzylation of aldehydes",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d0sc01133a": {
+    "title": "Selective electrochemical reduction of carbon dioxide to ethanol via a relay catalytic platform",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d0sc01202e": {
+    "title": "A reconstructed porous copper surface promotes selectivity and efficiency toward C2 products by electrocatalytic CO2 reduction",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d0sc02238a": {
+    "title": "Facile benzene reduction promoted by a synergistically coupled Cu–Co–Ce ternary mixed oxide",
+    "publication": "Chemical Science"
+  },
+  "10.1039_d0sc03754k": {
+    "title": "Formation of a mixed-valence Cu(I)/Cu(II) metal–organic framework with the full light spectrum and high selectivity of CO2 photoreduction into CH4",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c9sc00015a": {
+    "title": "Achieving efficient and robust catalytic reforming on dual-sites of Cu species",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c9sc05599a": {
+    "title": "Silica-supported, narrowly distributed, subnanometric Pt–Zn particles from single sites with high propane dehydrogenation performance",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c8sc00604k": {
+    "title": "Covalent triazine framework modified with coordinatively-unsaturated Co or Ni atoms for CO2 electrochemical reduction",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c8sc03161d": {
+    "title": "Surface engineering in PbS via partial oxidation: towards an advanced electrocatalyst for reduction of levulinic acid to γ-valerolactone",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c8sc03732a": {
+    "title": "Carbon-supported Ni nanoparticles for efficient CO2 electroreduction",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c8sc03986k": {
+    "title": "Enhanced CO2 electroreduction via interaction of dangling S bonds and Co sites in cobalt phthalocyanine/ZnIn2S4 hybrids",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c8sc04344b": {
+    "title": "Cathodized copper porphyrin metal–organic framework nanosheets for selective formate and acetate production from CO2 electroreduction",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c7sc03018e": {
+    "title": "Doping palladium with tellurium for the highly selective electrocatalytic reduction of aqueous CO2 to CO",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c7sc04724j": {
+    "title": "Encapsulation of ultrafine metal-oxide nanoparticles within mesopores for biomass-derived catalytic applications",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c7sc04849a": {
+    "title": "Electronic modulation of transition metal phosphide via doping as efficient and pH-universal electrocatalysts for hydrogen evolution reaction",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c6sc01659f": {
+    "title": "A covalent organic framework-based route to the in situ encapsulation of metal nanoparticles in N-rich hollow carbon spheres",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c6sc02664h": {
+    "title": "Metalloporphyrin-modified semiconductors for solar fuel production",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c6sc03194c": {
+    "title": "Porous dendritic copper: an electrocatalyst for highly selective CO2 reduction to formate in water/ionic liquid electrolyte",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c5sc00518c": {
+    "title": "Oxide-supported Ir nanodendrites with high activity and durability for the oxygen evolution reaction in acid PEM water electrolyzers",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c5sc02679b": {
+    "title": "Photoinduced water oxidation by an organic ligand incorporated into the framework of a stable metal–organic framework",
+    "publication": "Chemical Science"
+  },
+  "10.1039_c5sc04425a": {
+    "title": "Metal–organic framework-based CoP/reduced graphene oxide: high-performance bifunctional electrocatalyst for overall water splitting",
+    "publication": "Chemical Science"
+  },
+  "10.1021_ja065810a": {
+    "title": "Conversion of Methanol into Hydrocarbons over Zeolite H-ZSM-5:  Ethene Formation Is Mechanistically Separated from the Formation of Higher Alkenes",
+    "publication": "Journal of the American Chemical Society"
+  },
+  "10.1021_ja204559z": {
+    "title": "Selective, Room-Temperature Transformation of Methane to C1 Oxygenates by Deep UV Photolysis over Zeolites",
+    "publication": "Journal of the American Chemical Society"
+  },
+  "10.1021_jacsau.3c00030": {
+    "title": "Plasma-Induced Selective Propylene Epoxidation Using Water as the Oxygen Source",
+    "publication": "JACS Au"
+  },
+  "10.1038_s41467-019-12012-z": {
+    "title": "Balancing hydrogen adsorption/desorption by orbital modulation for efficient hydrogen evolution catalysis",
+    "publication": "Nature Communications"
+  },
+  "10.1038_s41467-019-12312-4": {
+    "title": "Boosting selective nitrogen reduction to ammonia on electron-deficient copper nanoparticles",
+    "publication": "Nature Communications"
+  },
+  "10.1038_s41467-019-12460-7": {
+    "title": "Anchoring Cu1 species over nanodiamond-graphene for semi-hydrogenation of acetylene",
+    "publication": "Nature Communications"
+  },
+  "10.1038_s41467-019-12788-0": {
+    "title": "Dopant-tuned stabilization of intermediates promotes electrosynthesis of valuable C3 products",
+    "publication": "Nature Communications"
+  },
+  "10.1038_s41467-020-19517-y": {
+    "title": "Direct conversion of methane to formaldehyde and CO on B2O3 catalysts",
+    "publication": "Nature Communications"
+  },
+  "10.1038_s41467-022-32137-y": {
+    "title": "Photocatalytic dehydrogenative C-C coupling of acetonitrile to succinonitrile",
+    "publication": "Nature Communications"
+  },
+  "10.1038_srep00598": {
+    "title": "Pd/C Synthesized with Citric Acid: An Efficient Catalyst for Hydrogen Generation from Formic Acid/Sodium Formate",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_srep02349": {
+    "title": "Synergistic effect of Brønsted acid and platinum on purification of automobile exhaust gases",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_srep02849": {
+    "title": "Hydrogen production by Tuning the Photonic Band Gap with the Electronic Band Gap of TiO2",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_srep04540": {
+    "title": "New route toward building active ruthenium nanoparticles on ordered mesoporous carbons with extremely high stability",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_srep05620": {
+    "title": "CO2-Free Power Generation on an Iron Group Nanoalloy Catalyst via Selective Oxidation of Ethylene Glycol to Oxalic Acid in Alkaline Media",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_srep05863": {
+    "title": "Nickel-cobalt bimetallic anode catalysts for direct urea fuel cell",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_srep12005": {
+    "title": "Visible-light-driven Photocatalytic N-arylation of Imidazole Derivatives and Arylboronic Acids on Cu/graphene catalyst",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_srep12901": {
+    "title": "Bifunctional Mesoporous Carbon Nitride: Highly Efficient Enzyme-like Catalyst for One-pot Deacetalization-Knoevenagel Reaction",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_srep20327": {
+    "title": "Hydrolysis of Cellulose by a Mesoporous Carbon-Fe2(SO4)3/γ-Fe2O3 Nanoparticle-Based Solid Acid Catalyst",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_srep37513": {
+    "title": "Catalytic conversion of lignin pyrolysis model compound- guaiacol and its kinetic model including coke formation",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_srep38888": {
+    "title": "The key role of meteorites in the formation of relevant prebiotic molecules in a formamide/water environment",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_srep42309": {
+    "title": "One-Step Hydrothermal Fabrication of Three-dimensional MoS2 Nanoflower using Polypyrrole as Template for Efficient Hydrogen Evolution Reaction",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-017-01463-3": {
+    "title": "ZnO@C (core@shell) microspheres derived from spent coffee grounds as applicable non-precious electrode material for DMFCs",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-017-03125-w": {
+    "title": "TiO(OH)2 – highly effective catalysts for optimizing CO2 desorption kinetics reducing CO2 capture cost: A new pathway",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-017-08296-0": {
+    "title": "Anomalous in situ Activation of Carbon-Supported Ni2P Nanoparticles for Oxygen Evolving Electrocatalysis in Alkaline Media",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-018-31475-6": {
+    "title": "A Metalated Porous Porphyrin Polymer with [Co(CO)4]− Anion as an Efficient Heterogeneous Catalyst for Ring Expanding Carbonylation",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-018-32177-9": {
+    "title": "One-pot synthesis of graphene- cobalt hydroxide composite nanosheets (Co/G NSs) for electrocatalytic water oxidation",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-018-37598-0": {
+    "title": "Multivariate Control of Effective Cobalt Doping in Tungsten Disulfide for Highly Efficient Hydrogen Evolution Reaction",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-019-40236-y": {
+    "title": "A trimetallic organometallic precursor for efficient water oxidation",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-019-42126-9": {
+    "title": "Mesoporous halloysite nanotubes modified by CuFe2O4 spinel ferrite nanoparticles and study of its application as a novel and efficient heterogeneous catalyst in the synthesis of pyrazolopyridine derivatives",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-019-51817-2": {
+    "title": "CO2 oxidative coupling of methane using an earth-abundant CaO-based catalyst",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-019-52013-y": {
+    "title": "Mesoporous bimetallic Fe/Co as highly active heterogeneous Fenton catalyst for the degradation of tetracycline hydrochlorides",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-019-54089-y": {
+    "title": "Hierarchical H-ZSM5 zeolites based on natural kaolinite as a high-performance catalyst for methanol to aromatic hydrocarbons conversion",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-019-57139-7": {
+    "title": "Metal–organic framework–derived Ni@C and NiO@C as anode catalysts for urea fuel cells",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-020-64046-9": {
+    "title": "A novel highly active and reusable carbon based platinum-ruthenium nanocatalyst for dimethylamine-borane dehydrogenation in water at room conditions",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-020-80285-2": {
+    "title": "Dehydration of d-fructose to 5-hydroxymethyl-2-furfural in DMSO using a hydrophilic sulfonated silica catalyst in a process promoted by microwave irradiation",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-021-84379-3": {
+    "title": "Synthesis of tetrazolo[1,5-a]pyrimidine-6-carbonitriles using HMTA-BAIL@MIL-101(Cr) as a superior heterogeneous catalyst",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-021-85832-z": {
+    "title": "Algal magnetic nickel oxide nanocatalyst in accelerated synthesis of pyridopyrimidine derivatives",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-021-97914-z": {
+    "title": "A novel strategy for stabilization of sub-nanometric Pd colloids on kryptofix functionalized MCM-41: nanoengineered material for Stille coupling transformation",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-022-11563-4": {
+    "title": "Cu and Ni Co-sputtered heteroatomic thin film for enhanced nonenzymatic glucose detection",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-022-12268-4": {
+    "title": "A novel environmental nano-catalyst of zeolite amended with carbon nanotube/silver nanoparticles decorated carbon paste electrode for electro-oxidation of propylene glycol",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-022-24553-3": {
+    "title": "Phosphonic acid tagged carbon quantum dots encapsulated in SBA-15 as a novel catalyst for the preparation of N-heterocycles with pyrazolo, barbituric acid and indole moieties",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-022-26769-9": {
+    "title": "Fe3O4@Glycerol-Cu as a novel heterogeneous magnetic nanocatalyst for the green synthesis of 2-amino-4H-chromenes",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-023-36521-6": {
+    "title": "Synthesis and characterization of nanocatalyst Cu2+/mesoporous carbon for amidation reactions of alcohols",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-023-40190-w": {
+    "title": "Green synthesis of thiourea derivatives from nitrobenzenes using Ni nanoparticles immobilized on triazine-aminopyridine-modified MIL-101(Cr) MOF",
+    "publication": "Scientific Reports"
+  },
+  "10.1038_s41598-023-40374-4": {
+    "title": "Tailor-designed nanoparticle-based PdNiSn catalyst as a potential anode for glycerol fuel cells",
+    "publication": "Scientific Reports"
+  }
+}

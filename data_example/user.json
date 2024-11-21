@@ -1,0 +1,9 @@
+{
+  "admin": {
+    "username": "admin",
+    "password": "18d093261b049ffc1c62299408ef72f281544bf3d340cf596c8b7b003ffc2ddb",
+    "salt": "4bb2243faa774a6aad738e488061e3cc",
+    "isDelete": false,
+    "role": "admin"
+  }
+}

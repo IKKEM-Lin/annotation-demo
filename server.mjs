@@ -1,7 +1,7 @@
 import Hapi from "@hapi/hapi";
 import Inert from "@hapi/inert";
-import path from "path";
-import fs from "fs";
+// import path from "path";
+// import fs from "fs";
 import JWT from "jsonwebtoken";
 import hapiAuthJWT from "hapi-auth-jwt2";
 import {
@@ -12,22 +12,9 @@ import {
   deleteUser,
   addUser,
   resetPassword,
-} from "./user.mjs";
-import { uploadJSON, getJSON, getUserLatestUploads } from "./annotation.mjs";
-
-const getArticles = () => {
-  const publicDir = path.resolve("public", "articles");
-  let fileNames = [];
-
-  try {
-    fileNames = fs.readdirSync(publicDir);
-  } catch (err) {
-    console.error(err);
-  }
-  return fileNames;
-};
-
-const fileNames = getArticles();
+} from "./be_user.mjs";
+import { uploadJSON, getJSON, getUserLatestUploads } from "./be_annotation.mjs";
+import { getArticles, updateArticleAssignee, getArticleAssignee, getArticleAssignToUser } from "./be_article.mjs";
 
 // node -e "console.log(require('crypto').randomBytes(256).toString('base64'));"
 const JWt_SECRET =
@@ -147,13 +134,70 @@ const start = async () => {
     },
   ]);
 
-  server.route({
-    method: "GET",
-    path: "/api/articles",
-    handler: (request, h) => {
-      return h.response(fileNames);
+  server.route([
+    {
+      method: "GET",
+      path: "/api/articles",
+      handler: async (request, h) => {
+        const articles = await getArticles();
+        return h.response(articles);
+      },
     },
-  });
+    {
+      method: "PUT",
+      path: "/api/articles/{doi}/assignee",
+      handler: async (request, h) => {
+        const currentUser = request.auth.credentials;
+        const {username} = currentUser;
+        const { doi } = request.params;
+        const oldAssigned = await getArticleAssignee(doi);
+        if (oldAssigned === username) {
+          return h.response({ message: "No change" }).code(200);
+        }
+        if (oldAssigned && oldAssigned !== username) {
+          return h.response({ message: "Article already assigned" }).code(400);
+        }
+        try {
+          await updateArticleAssignee(doi, username);
+          return h.response({ message: "Article updated" });
+        } catch (err) {
+          return h.response({ message: err.message }).code(400);
+        }
+      },
+    },
+    {
+      method: "DELETE",
+      path: "/api/articles/{doi}/assignee",
+      handler: async (request, h) => {
+        const currentUser = request.auth.credentials;
+        const {username} = currentUser;
+        const { doi } = request.params;
+        const oldAssigned = await getArticleAssignee(doi);
+        if (!oldAssigned) {
+          return h.response({ message: "No change" }).code(200);
+        }
+        if (oldAssigned !== username) {
+          return h.response({ message: "Permission denied" }).code(403);
+        }
+        try {
+          await updateArticleAssignee(doi, null);
+          return h.response({ message: "Article unassigned" });
+        } catch (err) {
+          return h.response({ message: err.message }).code(400);
+        }
+      }
+    },
+    // {
+    //   method: "GET",
+    //   path: "/api/articles/mine",
+    //   handler: async (request, h) => {
+    //     const currentUser = request.auth.credentials;
+    //     const {username} = currentUser;
+    //     const articles = await getArticleAssignToUser(username);
+    //     return h.response(articles);
+    //   }
+    // }
+  ]);
 
   server.route([
     {
@@ -196,8 +240,14 @@ const start = async () => {
       path: "/api/upload-json",
       handler: async (request, h) => {
         const currentUser = request.auth.credentials;
-        const result = await getUserLatestUploads(currentUser.username);
-        return h.response(result);
+        const articles = await getArticleAssignToUser(currentUser.username);
+        // const dois = articles.map(([doi, article]) => doi);
+        const storeResult = await getUserLatestUploads(currentUser.username);
+        const result = {};
+        articles.forEach(([doi, article]) => {
+          result[doi] = {assignee: article.assignee, latestFile: storeResult[doi+".pdf"]?.latestFile};
+        })
+        return h.response(result).code(200);
       },
     },
     {
@@ -241,42 +291,46 @@ const start = async () => {
   });
 
   // 静态文件服务,并将路由交给前端处理
-  server.route([{
-    method: "GET",
-    options: {
-      auth: false,
-    },
-    path: "/drag.js",
-    handler: {
-      file: {
-        path: "dist/drag.js",
+  server.route([
+    {
+      method: "GET",
+      options: {
+        auth: false,
+      },
+      path: "/drag.js",
+      handler: {
+        file: {
+          path: "dist/drag.js",
+        },
       },
     },
-  },{
-    method: "GET",
-    options: {
-      auth: false,
-    },
-    path: "/assets/{param*}",
-    handler: {
-      directory: {
-        path: "dist/assets/",
-        redirectToSlash: true,
+    {
+      method: "GET",
+      options: {
+        auth: false,
+      },
+      path: "/assets/{param*}",
+      handler: {
+        directory: {
+          path: "dist/assets/",
+          redirectToSlash: true,
+        },
       },
     },
-  },{
-    method: "GET",
-    options: {
-      auth: false,
-    },
-    path: "/articles/{param*}",
-    handler: {
-      directory: {
-        path: "dist/articles/",
-        redirectToSlash: true,
+    {
+      method: "GET",
+      options: {
+        auth: false,
+      },
+      path: "/articles/{param*}",
+      handler: {
+        directory: {
+          path: "dist/articles/",
+          redirectToSlash: true,
+        },
       },
     },
-  }]);
+  ]);
 
   server.route({
     method: "GET",
