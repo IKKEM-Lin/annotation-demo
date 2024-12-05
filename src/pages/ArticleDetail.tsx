@@ -4,7 +4,7 @@ import { CloudUploadOutlined } from "@ant-design/icons";
 import { Button, Flex, message } from "antd";
 // import { useEffect, useRef } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import HighlightExample from "../PdfReviewer";
+import HighlightExample from "../PdfReviewerV2";
 import { FileEndpointsService } from "../services/service";
 import { useEffect, useState } from "react";
 

@@ -26,7 +26,7 @@ const uploadJSON = async (data, article, username) => {
 
   // 将数据写入 JSON 文件
   fs.writeFileSync(filePath, JSON.stringify(data));
-  return filePath;
+  return filename;
 };
 
 const getUserLatestUploads = async (username) => {

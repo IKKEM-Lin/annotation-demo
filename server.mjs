@@ -221,7 +221,7 @@ const start = async () => {
             return h.response({ message: "No JSON data received" }).code(400);
           }
 
-          const savePath = uploadJSON(data, file, currentUser.username);
+          const savePath = await uploadJSON(data, file, currentUser.username);
 
           return h
             .response({

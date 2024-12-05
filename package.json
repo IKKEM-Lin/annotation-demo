@@ -21,6 +21,7 @@
     "@react-pdf-viewer/core": "^3.12.0",
     "@react-pdf-viewer/default-layout": "^3.12.0",
     "@react-pdf-viewer/highlight": "^3.12.0",
+    "@syncfusion/ej2-react-pdfviewer": "^27.2.5",
     "antd": "^5.21.6",
     "hapi-auth-jwt2": "^10.7.0",
     "joi": "^17.13.3",

@@ -49,6 +49,8 @@ export const MoveableContainer: FC<IMoveableContainer> = ({
       },
       onEnd: () => {
         setIsMoving(false);
+        const resizeEvent = new Event('resize');
+        window.dispatchEvent(resizeEvent);
       },
     });
     return () => releaseBinding();
