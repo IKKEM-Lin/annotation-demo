@@ -59,7 +59,7 @@ const ArticleDetail = () => {
           Upload
         </Button>
       </Flex>
-      <HighlightExample initialReactions={data} fileUrl={`/articles/${params.id}`} />
+      <HighlightExample initialReactions={data} fileUrl={`articles/${params.id}`} />
     </>
   );
 };
