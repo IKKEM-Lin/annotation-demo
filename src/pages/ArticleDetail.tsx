@@ -47,10 +47,12 @@ const ArticleDetail = () => {
           size="large"
           onClick={async () => {
             const data = localStorage.getItem("reactions") || "";
-            await FileEndpointsService.uploadAnnotationData(
+            const res = await FileEndpointsService.uploadAnnotationData(
               params.id || "",
               data
             );
+            const filename = res.filePath.split("/").pop();
+            window.history.replaceState({}, "", `/articles/${params.id}?v=${filename}`);
             message.success("Upload success");
           }}
         >

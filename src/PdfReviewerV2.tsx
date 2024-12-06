@@ -34,6 +34,7 @@ import {
   Inject,
   AnnotationAddEventArgs,
   PdfViewer,
+  Toolbar,
 } from "@syncfusion/ej2-react-pdfviewer";
 
 const COLOR_COLLECTION = [
@@ -99,15 +100,56 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
   const viewer = React.useRef<PdfViewerComponent>(null);
 
   useEffect(() => {
+    if (!currentSelected && reactions.length > 0) {
+      setCurrentSelected(reactions[0].id);
+    }
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem("reactions", JSON.stringify(reactions));
+    if (!viewer.current) {
+      return;
+    }
+    const v = (viewer.current.element as any)["ej2_instances"][0] as PdfViewer;
+    // window.v = v;
+    // v.annotation.getAnnotationWithId
+    const newAnnotationIds = reactions
+      .flatMap((reaction) => {
+        return reaction.notes.map((note) => {
+          return note.highlightAreas;
+        });
+      })
+      .map((annotation) => annotation.name);
+    // const hiddenAnnotationIds = reactions.flatMap((reaction) => {
+    //   return reaction.hidden ? reaction.notes.map((note) => {
+    //     return note.highlightAreas;
+    //   }) : [];
+    // }).map((annotation) => annotation.name as string);
+    const oldAnnotations = v.annotationCollection || [];
+    // console.log({oldAnnotations, newAnnotationIds});
+    for (const oldAnnotation of oldAnnotations) {
+      // if (hiddenAnnotationIds.includes(oldAnnotation.annotationId)) {
+      //   v.nodePropertyChange(oldAnnotation, {opacity: 0});
+      // }
+      if (newAnnotationIds.includes(oldAnnotation.annotationId)) {
+        continue;
+      }
+      v.annotation.deleteAnnotationById(oldAnnotation.annotationId);
+    }
   }, [reactions]);
+
+  const currentReactionIndex = reactions.findIndex(
+    (r) => r.id === currentSelected
+  );
+  const currentReactionColor =
+    currentReactionIndex !== -1 ? reactions[currentReactionIndex].color : "";
 
   const _exportAnnotation = async (id: string) => {
     if (!viewer.current) {
       return;
     }
-    const v =(viewer.current.element as any)["ej2_instances"][0] as PdfViewer;
-    const res = await v.exportAnnotationsAsObject()
+    const v = (viewer.current.element as any)["ej2_instances"][0] as PdfViewer;
+    const res = await v.exportAnnotationsAsObject();
     const value = JSON.parse((res as any) || "{}");
     if (!value || !value.pdfAnnotation) {
       return;
@@ -124,29 +166,17 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
       }
     }
     return result;
-  }
+  };
 
   const _deleteAnnotation = async (id: string) => {
     if (!viewer.current) {
       return;
     }
-    const v =(viewer.current.element as any)["ej2_instances"][0] as PdfViewer;
+    const v = (viewer.current.element as any)["ej2_instances"][0] as PdfViewer;
     v.annotation.deleteAnnotationById(id);
-  }
+  };
 
-  React.useEffect(() => {
-    if (!currentSelected && reactions.length > 0) {
-      setCurrentSelected(reactions[0].id);
-    }
-  }, []);
-
-  const currentReactionIndex = reactions.findIndex(
-    (r) => r.id === currentSelected
-  );
-  const currentReactionColor =
-    currentReactionIndex !== -1 ? reactions[currentReactionIndex].color : "";
-
-  const createNewReaction = (value?: any) => {
+  const handleCreateNewReaction = (value?: any) => {
     const fileName = fileUrl.split("/").pop();
     const newReactions = reactions.concat([
       {
@@ -180,7 +210,6 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
     setReactions(newReactions);
   };
 
-
   return (
     <div
       style={{
@@ -194,7 +223,11 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
           <PdfViewerComponent
             id="container"
             ref={viewer}
-            documentPath={`${location.origin}/${fileUrl}`}
+            documentPath={`${
+              location.origin.endsWith("/")
+                ? location.origin
+                : `${location.origin}/`
+            }${fileUrl}`}
             resourceUrl="https://cdn.syncfusion.com/ej2/26.2.11/dist/ej2-pdfviewer-lib"
             style={{ height: "100%", width: "100%" }}
             width={"100%"}
@@ -204,7 +237,9 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
               if (!viewer.current) {
                 return;
               }
-              const v =(viewer.current.element as any)["ej2_instances"][0] as PdfViewer;
+              const v = (viewer.current.element as any)[
+                "ej2_instances"
+              ][0] as PdfViewer;
               const annotations = reactions.flatMap((reaction) => {
                 return reaction.notes.map((note) => {
                   return note.highlightAreas;
@@ -212,15 +247,17 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
               });
               // console.log(annotations);
               const pages = new Array(v.pageCount).fill(0).map((_, i) => i);
-              const value = {pdfAnnotation: {}};
+              const value = { pdfAnnotation: {} };
               for (const page of pages) {
-                (value.pdfAnnotation as any)[page] = {shapeAnnotation: []};
+                (value.pdfAnnotation as any)[page] = { shapeAnnotation: [] };
               }
               for (const result of annotations) {
                 if (!result || !result.page) {
                   continue;
                 }
-                (value.pdfAnnotation as any)[result.page].shapeAnnotation.push(result);
+                (value.pdfAnnotation as any)[result.page].shapeAnnotation.push(
+                  result
+                );
               }
               v.importAnnotation(value);
             }}
@@ -229,13 +266,12 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
               ContextMenuItem.Strikethrough,
               ContextMenuItem.Comment,
               ContextMenuItem.Underline,
-              ...(currentSelected ? [] : [ContextMenuItem.Highlight, ContextMenuItem.Copy]),
+              ...(currentSelected
+                ? []
+                : [ContextMenuItem.Highlight, ContextMenuItem.Copy]),
             ]}
             annotationAdd={(evt: AnnotationAddEventArgs) => {
-              const {
-                annotationId,
-                textMarkupContent,
-              } = evt;
+              const { annotationId, textMarkupContent } = evt;
               const newNote: Note = {
                 annotationId: annotationId,
                 highlightAreas: undefined,
@@ -268,9 +304,21 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
               });
               setReactions(newReactions);
             }}
+            toolbarSettings={{
+              showTooltip: true,
+              toolbarItems: [
+                // "PageNavigationTool",
+                "MagnificationTool",
+                // "PanTool",
+                "SelectionTool",
+              ],
+              annotationToolbarItems: [],
+              formDesignerToolbarItems: [],
+            }}
           >
             <Inject
               services={[
+                Toolbar,
                 Magnification,
                 Navigation,
                 Annotation,
@@ -373,7 +421,7 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
                         <AntButton
                           onClick={(event) => {
                             event.stopPropagation();
-                            createNewReaction(r.value);
+                            handleCreateNewReaction(r.value);
                           }}
                           icon={<BlockOutlined />}
                         />
@@ -409,7 +457,10 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
                     <>
                       <Flex gap="4px 0" wrap>
                         {r.notes.map((note, ind) => (
-                          <AntTooltip title={note.quote} key={note.annotationId}>
+                          <AntTooltip
+                            title={note.quote}
+                            key={note.annotationId}
+                          >
                             <Tag
                               key={note.annotationId}
                               color={r.color}
@@ -460,7 +511,10 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
               // defaultActiveKey={[notes[0]?.id.toString()]}
             />
             <Flex justify="center" style={{ marginTop: "36px" }}>
-              <AntButton type="primary" onClick={() => createNewReaction()}>
+              <AntButton
+                type="primary"
+                onClick={() => handleCreateNewReaction()}
+              >
                 Add reaction
               </AntButton>
             </Flex>

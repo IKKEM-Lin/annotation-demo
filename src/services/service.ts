@@ -22,7 +22,7 @@ export const UserEndpointsService = {
 export const FileEndpointsService = {
   getUploadFiles: (): IPromise<Record<string, {assignee: string; latestFile: string;}>> => request(`/api/upload-json`, { method: "get" }),
   getUploadFile: (article: string, filename: string): IPromise<any> => request(`/api/upload-json/${article}/${filename}`, { method: "get" }),
-  uploadAnnotationData: (filename:string, payload: any): IPromise<any> => request(`/api/upload-json?file=${filename}`, { method: "post", body: payload }),
+  uploadAnnotationData: (filename:string, payload: any): IPromise<{message: string; filePath: string}> => request(`/api/upload-json?file=${filename}`, { method: "post", body: payload }),
 }
 
 
