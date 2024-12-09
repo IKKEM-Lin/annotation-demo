@@ -191,6 +191,7 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
     }
     const v = (viewer.current.element as any)["ej2_instances"][0] as PdfViewer;
     v.annotation.selectAnnotation(id);
+    v.annotation.clearSelection();
   };
 
   const handleCreateNewReaction = (value?: any) => {
