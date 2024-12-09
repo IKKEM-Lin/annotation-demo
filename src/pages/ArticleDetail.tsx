@@ -52,7 +52,7 @@ const ArticleDetail = () => {
               data
             );
             const filename = res.filePath.split("/").pop();
-            window.history.replaceState({}, "", `/articles/${params.id}?v=${filename}`);
+            window.history.replaceState({}, "", `/article/${params.id}?v=${filename}`);
             message.success("Upload success");
           }}
         >
