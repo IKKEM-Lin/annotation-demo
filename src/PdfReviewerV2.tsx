@@ -112,7 +112,6 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
     }
     const v = (viewer.current.element as any)["ej2_instances"][0] as PdfViewer;
     // window.v = v;
-    // v.annotation.getAnnotationWithId
     const newAnnotationIds = reactions
       .flatMap((reaction) => {
         return reaction.notes.map((note) => {
@@ -120,20 +119,30 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
         });
       })
       .map((annotation) => annotation.name);
-    // const hiddenAnnotationIds = reactions.flatMap((reaction) => {
-    //   return reaction.hidden ? reaction.notes.map((note) => {
-    //     return note.highlightAreas;
-    //   }) : [];
-    // }).map((annotation) => annotation.name as string);
+    const hiddenAnnotationIds = reactions.flatMap((reaction) => {
+      return reaction.hidden ? reaction.notes.map((note) => {
+        return note.highlightAreas;
+      }) : [];
+    }).map((annotation) => annotation.name as string);
     const oldAnnotations = v.annotationCollection || [];
-    // console.log({oldAnnotations, newAnnotationIds});
+    // console.log({hiddenAnnotationIds});
     for (const oldAnnotation of oldAnnotations) {
-      // if (hiddenAnnotationIds.includes(oldAnnotation.annotationId)) {
-      //   v.nodePropertyChange(oldAnnotation, {opacity: 0});
-      // }
       if (newAnnotationIds.includes(oldAnnotation.annotationId)) {
+        
+        const needToChange = (hiddenAnnotationIds.includes(oldAnnotation.annotationId) && oldAnnotation.opacity !== 0) || (!hiddenAnnotationIds.includes(oldAnnotation.annotationId) && oldAnnotation.opacity !== 1);
+        const pageIndex = oldAnnotation.pageIndex;
+        
+        if (needToChange) {
+          (v.annotationModule as any).isAnnotDeletionApiCall = true;
+          v.annotationModule.selectAnnotation(oldAnnotation.annotationId);
+          
+          v.annotation.textMarkupAnnotationModule.modifyOpacityProperty({value: hiddenAnnotationIds.includes(oldAnnotation.annotationId) ? 0 : 100, name: "changed"});
+          (v.annotationModule as any).isAnnotDeletionApiCall = false;
+          v.clearSelection(pageIndex);
+        }
         continue;
       }
+      v.annotation.clearSelection();
       v.annotation.deleteAnnotationById(oldAnnotation.annotationId);
     }
   }, [reactions]);
@@ -174,6 +183,14 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
     }
     const v = (viewer.current.element as any)["ej2_instances"][0] as PdfViewer;
     v.annotation.deleteAnnotationById(id);
+  };
+
+  const _selectAnnotation = async (id: string) => {
+    if (!viewer.current) {
+      return;
+    }
+    const v = (viewer.current.element as any)["ej2_instances"][0] as PdfViewer;
+    v.annotation.selectAnnotation(id);
   };
 
   const handleCreateNewReaction = (value?: any) => {
@@ -315,6 +332,7 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
               annotationToolbarItems: [],
               formDesignerToolbarItems: [],
             }}
+            enableAnnotationToolbar={false}
           >
             <Inject
               services={[
@@ -464,10 +482,7 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
                             <Tag
                               key={note.annotationId}
                               color={r.color}
-                              onClick={() =>
-                                // jumpToHighlightArea(note.highlightAreas[0])
-                                {}
-                              }
+                              onClick={() => _selectAnnotation(note.annotationId)}
                               closable
                               style={{ cursor: "pointer", userSelect: "none" }}
                               onClose={() => {
