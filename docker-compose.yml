@@ -16,6 +16,9 @@ services:
       - 9557:3000
     volumes:
       - ./data:/app/fe/data
+      - ./public:/app/fe/public
+      - ./src:/app/fe/src
+      - ./data_example:/app/fe/data_example
     networks:
       - annotation-app-net
 
