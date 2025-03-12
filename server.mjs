@@ -109,6 +109,10 @@ const start = async () => {
         const { username } = request.params;
         try {
           await deleteUser(username);
+          const articles = await getArticleAssignToUser(username);
+          for (const article of articles) {
+            await updateArticleAssignee(article[0], null);
+          }
           return h.response({ message: "User deleted" });
         } catch (err) {
           return h.response({ message: err.message }).code(400);

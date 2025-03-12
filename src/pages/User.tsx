@@ -53,12 +53,12 @@ const User = () => {
             icon={<RedoOutlined />}
           />
         </Tooltip>,
-        <Popconfirm
+        record.id !== "admin" && <Popconfirm
           title="Delete the User?"
           key={`${record.id}-2`}
           description={
             <>
-              Are you sure to delete <b>{record.title}</b> ?
+              Are you sure to delete <b>{record.id}</b> ?
             </>
           }
           onConfirm={async () => {
