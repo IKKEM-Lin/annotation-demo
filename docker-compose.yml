@@ -19,6 +19,12 @@ services:
       - ./public:/app/fe/public
       - ./src:/app/fe/src
       - ./data_example:/app/fe/data_example
+      - ./package.json:/app/fe/package.json
+      - ./after_build.sh:/app/fe/after_build.sh
+      - ./be_user.mjs:/app/fe/be_user.mjs
+      - ./be_annotation.mjs:/app/fe/be_annotation.mjs
+      - ./be_article.mjs:/app/fe/be_article.mjs
+      - ./server.mjs:/app/fe/server.mjs
     networks:
       - annotation-app-net
 
