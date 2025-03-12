@@ -1,0 +1,1 @@
+find ./dist/assets -type f -name "*.js" -exec sed -i 's|dt.data.url+"/pdfium.js"|"https://cdn.hzc.pub/pdfium.js"|g' {} \;
