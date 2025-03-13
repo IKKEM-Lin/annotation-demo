@@ -241,7 +241,12 @@ const HighlightExample: React.FC<HighlightExampleProps> = ({
           <PdfViewerComponent
             id="container"
             ref={viewer}
-            documentPath={`https://cdn.hzc.pub/${fileUrl}`}
+            // documentPath={`https://cdn.hzc.pub/${fileUrl}`}
+            documentPath={`${
+              location.origin.endsWith("/")
+                ? location.origin
+                : `${location.origin}/`
+            }${fileUrl}`}
             resourceUrl="https://cdn.syncfusion.com/ej2/26.2.11/dist/ej2-pdfviewer-lib"
             style={{ height: "100%", width: "100%" }}
             width={"100%"}
