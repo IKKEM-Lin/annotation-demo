@@ -3,7 +3,7 @@
 import type { ActionType, ProColumns } from "@ant-design/pro-components";
 import { ProTable, ProTableProps } from "@ant-design/pro-components";
 // import { Button, Popconfirm, Tooltip } from "antd";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { FileEndpointsService, OtherEndpointsService } from "../services/service";
 // import { components } from "../services/api-type";
 // import { waitTime } from "../util";
@@ -11,6 +11,7 @@ import { FileEndpointsService, OtherEndpointsService } from "../services/service
 import { Link } from "react-router-dom";
 import { Button, message, Popconfirm, Tooltip } from "antd";
 import { MinusOutlined } from "@ant-design/icons";
+import StatusSelection from "../component/StatusSelection";
 
 const tableRequest: ProTableProps<any, any>["request"] = async () => {
   //   console.log(params, sort, filter);
@@ -21,7 +22,7 @@ const tableRequest: ProTableProps<any, any>["request"] = async () => {
     const fileName = res[article]?.latestFile;
     const updateTime =
       fileName && new Date(+fileName.split(".")[0]).toLocaleString();
-    return { doi: article, filename: fileName, updateTime };
+    return { doi: article, filename: fileName, updateTime, status: res[article]?.status };
   });
   return {
     data: data,
@@ -31,6 +32,7 @@ const tableRequest: ProTableProps<any, any>["request"] = async () => {
 
 const Annotation = () => {
   const actionRef = useRef<ActionType>();
+  const [statusLoading, setStatusLoading] = useState<string[]>([]);
   const columns: ProColumns<any>[] = [
     {
       title: "DOI",
@@ -48,6 +50,34 @@ const Annotation = () => {
           "-"
         );
       },
+    },
+    {
+      title: "Status",
+      dataIndex: "status",
+      hideInSearch: true,
+      render: (_, record) => {
+        return (
+          <StatusSelection
+            value={record.status || "Pending"}
+            onChange={async (value) => {
+              try {
+                setStatusLoading((prev) => [...prev, record.doi]);
+                await OtherEndpointsService.updateArticleStatus(record.doi, value);
+                message.success(`${record.doi} status updated to ${value}`);
+                actionRef.current?.reload();
+              } catch (error: any) {
+                console.error(error);
+                message.error("Error: " + error.message);
+              } finally{
+                setStatusLoading((prev) =>
+                  prev.filter((doi) => doi !== record.doi)
+                );
+              }
+            }}
+            loading={statusLoading.includes(record.doi)}
+          />
+        );
+      }
     },
     {
       title: "Update Time",

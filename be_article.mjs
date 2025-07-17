@@ -30,6 +30,16 @@ const updateArticleAssignee = async (doi, assignee) => {
         throw new Error("Article not found");
     }
     articles[doi].assignee = assignee;
+    updateArticleStatus(doi, "");
+    await db.write(articles);
+};
+
+const updateArticleStatus = async (doi, status) => {
+    const articles = await db.data;
+    if (!articles[doi]) {
+        throw new Error("Article not found");
+    }
+    articles[doi].status = status;
     await db.write(articles);
 };
 
@@ -41,4 +51,4 @@ const getArticleAssignee = async (doi) => {
     return articles[doi].assignee;
 };
 
-export { getArticles, updateArticleAssignee, getArticleAssignee, getArticleAssignToUser };
+export { getArticles, updateArticleAssignee, updateArticleStatus, getArticleAssignee, getArticleAssignToUser };

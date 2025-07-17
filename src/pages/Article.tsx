@@ -17,6 +17,7 @@ import {
   MinusOutlined,
   PlusCircleOutlined,
 } from "@ant-design/icons";
+import {options} from "../component/StatusSelection";
 
 const Article = () => {
   const [Loading, setLoading] = useState(false);
@@ -34,6 +35,7 @@ const Article = () => {
       title: res[doi].title,
       publication: res[doi].publication,
       assign: res[doi].assignee,
+      status: res[doi].status || "",
     }));
     setData(data);
   };
@@ -73,6 +75,15 @@ const Article = () => {
       copyable: true,
       ellipsis: true,
       hideInSearch: true,
+    },
+    {
+      title: "Status",
+      dataIndex: "status",
+      hideInSearch: true,
+      render: (_, record) => {
+        const item = options?.find((item) => item.value === record.status);
+        return item?.label || ""
+      },
     },
     {
       title: "Operation",

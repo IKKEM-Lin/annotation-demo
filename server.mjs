@@ -14,7 +14,7 @@ import {
   resetPassword,
 } from "./be_user.mjs";
 import { uploadJSON, getJSON, getUserLatestUploads } from "./be_annotation.mjs";
-import { getArticles, updateArticleAssignee, getArticleAssignee, getArticleAssignToUser } from "./be_article.mjs";
+import { getArticles, updateArticleAssignee, updateArticleStatus, getArticleAssignee, getArticleAssignToUser } from "./be_article.mjs";
 
 // node -e "console.log(require('crypto').randomBytes(256).toString('base64'));"
 const JWt_SECRET =
@@ -170,6 +170,39 @@ const start = async () => {
       },
     },
     {
+      method: "PUT",
+      path: "/api/articles/{doi}/status",
+      handler: async (request, h) => {
+        try {
+          const data = request.payload; // 获取 JSON 数据
+          const currentUser = request.auth.credentials;
+          const { doi } = request.params;
+
+          if (!data) {
+            return h.response({ message: "No JSON data received" }).code(400);
+          }
+
+          if (!doi || !data.status) {
+            return h.response({ message: "Missing required fields: doi and status" }).code(400);
+          }
+          const doiAssignee = await getArticleAssignee(doi);
+          if (doiAssignee && doiAssignee !== currentUser.username) {
+            return h.response({ message: "Permission denied" }).code(403);
+          }
+          await updateArticleStatus(doi, data.status);
+
+          return h
+            .response({
+              message: `${doi} status updated to ${data.status}`,
+            })
+            .code(200);
+        } catch (err) {
+          console.error("Error processing JSON data:", err);
+          return h.response({ message: "Internal Server Error" }).code(500);
+        }
+      },
+    },
+    {
       method: "DELETE",
       path: "/api/articles/{doi}/assignee",
       handler: async (request, h) => {
@@ -249,7 +282,7 @@ const start = async () => {
         const storeResult = await getUserLatestUploads(currentUser.username);
         const result = {};
         articles.forEach(([doi, article]) => {
-          result[doi] = {assignee: article.assignee, latestFile: storeResult[doi+".pdf"]?.latestFile};
+          result[doi] = {assignee: article.assignee, latestFile: storeResult[doi+".pdf"]?.latestFile, status: article.status};
         })
         return h.response(result).code(200);
       },

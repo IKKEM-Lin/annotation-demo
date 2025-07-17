@@ -20,7 +20,7 @@ export const UserEndpointsService = {
 };
 
 export const FileEndpointsService = {
-  getUploadFiles: (): IPromise<Record<string, {assignee: string; latestFile: string;}>> => request(`/api/upload-json`, { method: "get" }),
+  getUploadFiles: (): IPromise<Record<string, {assignee: string; status: string; latestFile: string;}>> => request(`/api/upload-json`, { method: "get" }),
   getUploadFile: (article: string, filename: string): IPromise<any> => request(`/api/upload-json/${article}/${filename}`, { method: "get" }),
   uploadAnnotationData: (filename:string, payload: any): IPromise<{message: string; filePath: string}> => request(`/api/upload-json?file=${filename}`, { method: "post", body: payload }),
 }
@@ -28,7 +28,8 @@ export const FileEndpointsService = {
 
 export const OtherEndpointsService = {
   login: (payload: { username: string; password: string }): IPromise<{token: string}> => request(`/api/login`, { method: "post", body: payload }),
-  getArticles: (): IPromise<Record<string, {title: string; publication: string; assignee?: string}>> => request(`/api/articles`, { method: "get" }),
+  getArticles: (): IPromise<Record<string, {title: string; publication: string; assignee?: string; status?: string}>> => request(`/api/articles`, { method: "get" }),
   assignArticle: (doi: string): IPromise<any> => request(`/api/articles/${doi}/assignee`, { method: "put", body: {} }),
   unassignArticle: (doi: string): IPromise<any> => request(`/api/articles/${doi}/assignee`, { method: "delete" }),
+  updateArticleStatus: (doi: string, status: string): IPromise<any> => request(`/api/articles/${doi}/status`, { method: "put", body: { status } }),
 }
