@@ -17,6 +17,8 @@ services:
     volumes:
       - ./data:/app/fe/data
       - ./public:/app/fe/public
+      - ./dist:/app/fe/dist
+      - ./node_modules:/app/fe/node_modules
       - ./src:/app/fe/src
       - ./data_example:/app/fe/data_example
       - ./package.json:/app/fe/package.json
