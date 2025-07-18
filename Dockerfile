@@ -8,4 +8,4 @@ RUN cd fe && \
 EXPOSE 3000
 
 WORKDIR /app/fe
-CMD npm run server
+CMD npm run build && npm run server
